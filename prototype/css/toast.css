@@ -1,0 +1,71 @@
+/* AppToast — snackbar reutilizable */
+.AppToastHost {
+  position: absolute;
+  right: 0;
+  bottom: calc(72px + var(--spacer-3));
+  left: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--spacer-4);
+  pointer-events: none;
+}
+
+.phone-shell--session-detail .AppToastHost {
+  bottom: var(--spacer-4);
+}
+
+/* Flujo de mentor/cita (sin bottom nav) — toast "¡Cita confirmada!" a
+   30px del borde inferior. */
+.phone-shell--mentor-flow .AppToastHost {
+  bottom: 30px;
+}
+
+.AppToast {
+  display: flex;
+  gap: var(--spacer-3);
+  align-items: center;
+  width: 100%;
+  max-width: 361px;
+  padding: 12px var(--spacer-4);
+  border-radius: 8px;
+  background: var(--color-neutral-600);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  pointer-events: auto;
+}
+
+.AppToast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.AppToast__message {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-50);
+}
+
+.AppToast__action {
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-line);
+  color: var(--color-brand-300);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.AppToast__action:hover {
+  color: var(--color-neutral-50);
+}

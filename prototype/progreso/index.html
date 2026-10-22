@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rookie — Progreso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" />
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/pantalla-en-desarrollo.css" />
+  </head>
+  <body>
+    <div class="app-viewport">
+      <div class="phone-shell phone-shell--en-desarrollo" id="phone-shell">
+        <div class="phone-shell__body" id="progreso-root"></div>
+        <div
+          class="phone-shell__navbar BarraDeNavegacion"
+          id="progreso-navbar"
+          data-navbar
+          data-navbar-active="progreso"
+          data-navbar-assets="../assets/icons/navbar"
+        ></div>
+      </div>
+    </div>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/pantalla-en-desarrollo.js"></script>
+    <script>
+      (function () {
+        function boot() {
+          window.PantallaEnDesarrollo?.mountPreset('#progreso-root', 'progreso');
+          const navbar = document.querySelector('#progreso-navbar .navbar');
+          window.Navbar?.bindTabNavigation(
+            navbar,
+            window.Navbar.getSiblingTabRoutes(),
+            'progreso'
+          );
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', boot);
+        } else {
+          boot();
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+/* Historia 3.1 — Plan adaptado a motivaciones */
+
+.screen--profiling-motivations-review.is-active,
+.screen--profiling-plan-ready.is-active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Reserva espacio para BarraSuperiorBack (absolute, top:30px) — mismo patrón
+   que profiling-personal / profiling-motivations (profiling.css), para que
+   el stepper quede justo debajo y no al mismo nivel/solapado. */
+.screen--profiling-motivations-review .profiling-screen__stepper-wrap,
+.screen--profiling-plan-ready .profiling-screen__stepper-wrap {
+  padding-top: var(--screen-title-offset-top);
+}
+
+.screen--plan-generating.is-active {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Pantalla 1 — Resumen de motivaciones ── */
+.motivations-review__intro {
+  /* Tipografía: .screen-intro (components.css) */
+  margin-bottom: var(--spacer-4);
+}
+
+.motivations-review__card {
+  padding: var(--spacer-5);
+  border-radius: var(--spacer-2);
+  background: var(--background-default);
+}
+
+.motivations-review__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.motivations-review__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+}
+
+.motivations-review__question {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-strong-line);
+  color: var(--content-default);
+}
+
+.motivations-review__answer {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: 400;
+  line-height: var(--body-sm-line);
+  color: var(--content-default);
+}
+
+/* ── Pantalla 2 — Generando plan ── */
+.plan-generating {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  background: var(--color-neutral-100);
+}
+
+.plan-generating__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer-5);
+  padding: var(--spacer-5);
+  text-align: center;
+}
+
+.plan-generating__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-neutral-300);
+  border-top-color: var(--color-brand-600);
+  border-radius: 50%;
+  animation: plan-generating-spin 0.9s linear infinite;
+}
+
+.plan-generating__text {
+  margin: 0;
+  max-width: 280px;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+@keyframes plan-generating-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Pantalla 3 — Plan autogenerado ── */
+.plan-ready-screen__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--spacer-4) var(--content-margin-x) var(--spacer-5);
+}
+
+.plan-ready-screen__hero-title {
+  margin: 0 0 var(--spacer-4);
+  text-align: left;
+}
+
+/* ── CardPlan simplificada (Figma 13131:130876 — sin foto/trofeo/checklist) ── */
+.card-plan--simple {
+  position: relative;
+  margin-bottom: var(--spacer-4);
+  border-top: 12px solid var(--color-brand-300);
+  border-bottom: 8px solid var(--color-brand-300);
+  border-radius: var(--spacer-2);
+  background: var(--background-default);
+  overflow: hidden;
+}
+
+.card-plan__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacer-5) var(--spacer-4) 0;
+  text-align: center;
+}
+
+.card-plan__tagline {
+  margin: 0 0 var(--spacer-2);
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-strong-line);
+  color: var(--color-brand-300);
+}
+
+.card-plan__goal {
+  margin: 0;
+  max-width: 269px;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-lg-size);
+  font-weight: 600;
+  line-height: var(--heading-lg-line);
+  color: var(--color-brand-600);
+}
+
+.card-plan__meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacer-2);
+  padding: var(--spacer-6) var(--spacer-5) var(--spacer-5);
+}
+
+.card-plan__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-plan__stat-value {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-lg-size);
+  font-weight: 600;
+  line-height: var(--heading-lg-line);
+  color: var(--color-brand-600);
+}
+
+.card-plan__stat-label {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-500);
+}
+
+.plan-ready-screen__hint {
+  margin: 0 0 var(--spacer-4);
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+.plan-ready-screen__actions {
+  padding: 0 var(--content-margin-x) var(--spacer-5);
+}

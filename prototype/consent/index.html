@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rookie — 1.2.2 Consentimiento de datos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" />
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/consent.css" />
+  </head>
+  <body>
+    <div class="app-viewport">
+      <div class="phone-shell phone-shell--consent" id="phone-shell">
+        <div class="phone-shell__body">
+          <!-- 1.2.2 — Consentimiento de datos — default (Figma 13131:112989) -->
+          <section
+            class="screen screen--consent is-active"
+            id="screen-consent-default"
+            aria-label="Consentimiento de datos"
+          >
+            <nav
+              class="BarraSuperiorBack BarraSuperiorBack--predeterminada"
+              data-barra-superior-back
+              data-variant="predeterminada"
+              aria-label="Navegación"
+            >
+              <button
+                type="button"
+                class="BarraSuperiorBack__btn"
+                id="consent-back"
+                aria-label="Volver"
+                data-barra-superior-back-btn
+              >
+                <span class="BarraSuperiorBack__hit" aria-hidden="true"></span>
+                <svg class="BarraSuperiorBack__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 5L5 12L12 19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </nav>
+            <div class="consent-screen">
+
+              <div class="consent-screen__body">
+                <div class="consent-screen__top">
+                  <header class="screen-intro consent-screen__header">
+                    <h1 class="screen-intro__title" id="consent-title">Tu privacidad nos importa</h1>
+                    <p class="screen-intro__subtitle" id="consent-intro"></p>
+                  </header>
+
+                  <div class="consent-screen__form">
+                    <label class="consent-checkbox" for="consent-terms">
+                      <input
+                        class="consent-checkbox__input"
+                        type="checkbox"
+                        id="consent-terms"
+                        name="consent-terms"
+                      />
+                      <span class="consent-checkbox__box" aria-hidden="true"></span>
+                      <span class="consent-checkbox__label" id="consent-terms-label"></span>
+                    </label>
+
+                    <label class="consent-checkbox" for="consent-newsletter">
+                      <input
+                        class="consent-checkbox__input"
+                        type="checkbox"
+                        id="consent-newsletter"
+                        name="consent-newsletter"
+                      />
+                      <span class="consent-checkbox__box" aria-hidden="true"></span>
+                      <span class="consent-checkbox__label" id="consent-newsletter-label"></span>
+                    </label>
+
+                    <p class="consent-screen__required" id="consent-required-hint"></p>
+                  </div>
+                </div>
+
+                <div class="consent-screen__illustration">
+                  <img id="consent-illustration" src="" alt="" width="200" height="200" />
+                </div>
+
+                <div class="consent-screen__actions">
+                  <button type="button" class="btn consent-screen__info" id="consent-more-info">
+                    Más información
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn--primary consent-screen__accept btn--disabled"
+                    id="consent-accept"
+                    disabled
+                  >
+                    Aceptar y continuar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/figma-1-2-spec.js"></script>
+    <script src="../js/barra-superior-back.js"></script>
+    <script src="../js/consent-app.js"></script>
+  </body>
+</html>

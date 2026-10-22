@@ -1,0 +1,106 @@
+/* PantallaDeArranqueNumeros — Figma 13516:47558 */
+
+.phone-shell--countdown {
+  background: var(--color-brand-600);
+}
+
+.phone-shell--countdown .phone-shell__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.screen--countdown.is-active,
+.PantallaDeArranqueNumeros {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  background: var(--color-brand-600);
+}
+
+.PantallaDeArranqueNumeros__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Countdown — Figma 13518:47738 ── */
+.Countdown {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.Countdown__arc-wrap {
+  position: absolute;
+  top: 9.18%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+}
+
+.Countdown__arc {
+  display: block;
+}
+
+.Countdown__arc-track {
+  opacity: 1;
+}
+
+.Countdown__arc-progress {
+  transition: none;
+}
+
+.Countdown__arc.is-animating .Countdown__arc-progress {
+  animation: countdown-arc-fill var(--countdown-step-duration, 1s) linear forwards;
+}
+
+.Countdown__number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0 23.13%;
+  font-family: var(--font-family-default);
+  font-size: 96px;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 18px;
+  color: var(--color-neutral-50);
+  text-align: center;
+}
+
+.Countdown__number.is-entering {
+  animation: countdown-number-enter 0.32s ease-out;
+}
+
+@keyframes countdown-arc-fill {
+  from {
+    stroke-dashoffset: var(--countdown-circumference, 534.07);
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes countdown-number-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

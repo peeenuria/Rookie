@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rookie — Scanner · 5 pantallas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" />
+    <link rel="stylesheet" href="../../../css/tokens.css" />
+    <link rel="stylesheet" href="../../../css/layout.css" />
+    <link rel="stylesheet" href="../../../css/components.css" />
+    <link rel="stylesheet" href="../../../css/code-activation.css" />
+    <style>
+      .code-scanner-sheets-demo__frame {
+        width: 100%;
+        max-width: 393px;
+        height: 865px;
+        border: none;
+        border-radius: 24px;
+        background: var(--background-default);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="code-scanner-sheets-demo">
+      <header class="code-scanner-sheets-demo__header">
+        <h1 class="code-scanner-sheets-demo__title">Scanner — 5 pantallas completas</h1>
+        <p class="code-scanner-sheets-demo__subtitle">
+          Historia 1.1 · Bottom sheet visible por defecto (excepto éxito) · Figma 13131:120018–120355
+        </p>
+      </header>
+
+      <div class="code-scanner-sheets-demo__grid">
+        <section class="code-scanner-sheets-demo__item">
+          <p class="code-scanner-sheets-demo__label">1 — Visor estándar (neutro)</p>
+          <iframe
+            class="code-scanner-sheets-demo__frame"
+            title="Scanner visor estándar"
+            src="../../../activation/index.html?embed=scanner-sheet&v=8#code-scanner-screen-standard"
+          ></iframe>
+        </section>
+
+        <section class="code-scanner-sheets-demo__item">
+          <p class="code-scanner-sheets-demo__label">2 — Éxito (bracket azul + check)</p>
+          <iframe
+            class="code-scanner-sheets-demo__frame"
+            title="Scanner éxito"
+            src="../../../activation/index.html?embed=scanner-sheet&v=8#code-scanner-screen-success"
+          ></iframe>
+        </section>
+
+        <section class="code-scanner-sheets-demo__item">
+          <p class="code-scanner-sheets-demo__label">3 — Error: código no leído</p>
+          <iframe
+            class="code-scanner-sheets-demo__frame"
+            title="Scanner error de lectura"
+            src="../../../activation/index.html?embed=scanner-sheet&v=8#code-scanner-screen-read-error"
+          ></iframe>
+        </section>
+
+        <section class="code-scanner-sheets-demo__item">
+          <p class="code-scanner-sheets-demo__label">4 — Error: código ya utilizado</p>
+          <iframe
+            class="code-scanner-sheets-demo__frame"
+            title="Scanner código utilizado"
+            src="../../../activation/index.html?embed=scanner-sheet&v=8#code-scanner-screen-already-used"
+          ></iframe>
+        </section>
+
+        <section class="code-scanner-sheets-demo__item">
+          <p class="code-scanner-sheets-demo__label">5 — Error: código no válido</p>
+          <iframe
+            class="code-scanner-sheets-demo__frame"
+            title="Scanner código no válido"
+            src="../../../activation/index.html?embed=scanner-sheet&v=8#code-scanner-screen-invalid"
+          ></iframe>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

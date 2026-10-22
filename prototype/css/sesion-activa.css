@@ -1,0 +1,281 @@
+/* SesiónActiva — Figma 13518:47767 */
+
+.phone-shell--sesion-activa {
+  background: var(--color-neutral-100);
+}
+
+.phone-shell--sesion-activa .phone-shell__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.screen--sesion-activa.is-active,
+.SesionActiva {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-neutral-100);
+}
+
+.SesionActiva__content {
+  width: 100%;
+  max-width: 393px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SesionActiva__metadatos {
+  width: 354px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.SesionActiva__fases {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.SesionActiva__fase-actual,
+.SesionActiva__fase-siguiente {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.SesionActiva__fase-minutos {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-md-size);
+  line-height: 20px;
+  color: var(--color-neutral-500);
+}
+
+.SesionActiva__fase-nombre {
+  margin: 0;
+  width: 100%;
+  font-size: 48px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: var(--heading-lg-line);
+  color: var(--color-brand-600);
+}
+
+.SesionActiva__siguiente-label {
+  margin: 0;
+  width: 100%;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--color-neutral-500);
+}
+
+.SesionActiva__siguiente-nombre {
+  margin: 0;
+  width: 100%;
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 28px;
+  color: var(--color-neutral-600);
+}
+
+.SesionActiva__barras {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.SesionActiva__barra-progreso {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 10px;
+}
+
+.SesionActiva__barra-progreso-base {
+  position: absolute;
+  inset: -10px 0 0 0;
+}
+
+.SesionActiva__barra-progreso-base img {
+  display: block;
+  width: 100%;
+  height: 10px;
+}
+
+.SesionActiva__barra-progreso-activo {
+  position: absolute;
+  left: 0.5px;
+  top: 0.5px;
+  width: 100px;
+  height: 10px;
+}
+
+.SesionActiva__barra-progreso-activo img {
+  display: block;
+  width: 100%;
+  height: 10px;
+}
+
+.SesionActiva__barra-fase-inactiva {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 10px;
+}
+
+.SesionActiva__barra-fase-inactiva img {
+  display: block;
+  width: 100%;
+  height: 10px;
+}
+
+.SesionActiva__metricas {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.SesionActiva__metrica {
+  width: 131px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.SesionActiva__metrica-label {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-lg-size);
+  line-height: 22px;
+  color: var(--color-neutral-500);
+}
+
+.SesionActiva__metrica-valor {
+  margin: 0;
+  width: 100%;
+  font-size: var(--heading-lg-size);
+  font-weight: 600;
+  font-style: italic;
+  line-height: var(--heading-lg-line);
+  color: var(--color-neutral-600);
+}
+
+.SesionActiva__pausa {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botón de pausa (140x140) */
+.BotonDePausa {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform var(--button-press-duration) ease, opacity var(--button-press-duration) ease;
+}
+
+.BotonDePausa:active:not(:disabled) {
+  transform: scale(var(--button-press-scale));
+  opacity: 0.92;
+}
+
+.BotonDePausa:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.BotonDePausa__minutero {
+  position: absolute;
+  inset: 10px;
+  display: block;
+}
+
+.BotonDePausa__minutero-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.BotonDePausa__button {
+  position: absolute;
+  inset: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BotonDePausa__button::before {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  border: 5px solid var(--color-brand-600);
+  background: var(--color-neutral-50);
+}
+
+.BotonDePausa__icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+}
+
+.BotonDePausa__icon-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.BotonDePausa--pressed-visual .BotonDePausa__button::before {
+  background: var(--color-brand-600);
+  border-color: var(--color-brand-600);
+}
+
+.SesionActiva__nota {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SesionActiva__nota-texto {
+  margin: 0;
+  width: 213px;
+  font-size: var(--body-sm-size);
+  line-height: 18px;
+  color: var(--color-neutral-500);
+  text-align: center;
+}
+

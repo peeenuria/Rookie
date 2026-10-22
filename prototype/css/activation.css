@@ -1,0 +1,742 @@
+/**
+ * Historia 1.1 — Activación (Figma canvas 12462:30)
+ */
+
+.phone-shell--splash {
+  background: var(--color-brand-600);
+}
+
+.phone-shell--splash-crossfading {
+  background: var(--color-brand-600);
+}
+
+.screen--splash {
+  background: var(--color-brand-600);
+}
+
+.screen--splash.is-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--frame-min-height);
+}
+
+/* Crossfade Splash → Bienvenida: ambas pantallas apiladas, sin frame vacío */
+.phone-shell__body.is-splash-crossfading {
+  position: relative;
+  min-height: var(--frame-min-height);
+  background: var(--color-brand-600);
+}
+
+.phone-shell__body.is-splash-crossfading .screen--splash.is-active,
+.phone-shell__body.is-splash-crossfading .screen--walkthrough-1.is-active {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: var(--frame-min-height);
+  min-height: var(--frame-min-height);
+  margin: 0;
+  pointer-events: none;
+}
+
+.phone-shell__body.is-splash-crossfading .screen--splash.is-active {
+  display: flex;
+  z-index: 2;
+  opacity: 1;
+}
+
+.phone-shell__body.is-splash-crossfading .screen--walkthrough-1.is-active {
+  display: block;
+  z-index: 1;
+  opacity: 0;
+}
+
+.phone-shell__body.is-splash-crossfading-run .screen--splash.is-active {
+  transition: opacity var(--splash-crossfade-ms, 350ms) ease-in-out;
+  opacity: 0;
+}
+
+.phone-shell__body.is-splash-crossfading-run .screen--walkthrough-1.is-active {
+  transition: opacity var(--splash-crossfade-ms, 350ms) ease-in-out;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-shell__body.is-splash-crossfading-run .screen--splash.is-active,
+  .phone-shell__body.is-splash-crossfading-run .screen--walkthrough-1.is-active {
+    transition: none;
+  }
+}
+
+/* Figma 13058:2024 — Splash: 167×92, centrado en frame 393×865 */
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 167px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  font: inherit;
+  color: inherit;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.splash.is-entering {
+  animation: splash-logo-enter 650ms ease-out forwards;
+}
+
+.splash.is-entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes splash-logo-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash,
+  .splash.is-entering {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.splash:focus-visible {
+  outline: 2px solid var(--color-neutral-50);
+  outline-offset: 4px;
+}
+
+.splash__logo {
+  display: block;
+  width: 55.724px;
+  height: 46.854px;
+  flex-shrink: 0;
+}
+
+.splash__title {
+  margin: 0;
+  width: 100%;
+  height: 38px;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-lg-size);
+  font-weight: var(--heading-lg-weight);
+  line-height: var(--heading-lg-line);
+  text-align: center;
+  color: var(--color-neutral-50);
+}
+
+/* ── 1.1.2 Walkthrough 1 (Figma 13060:2053) ── */
+
+/*
+ * CTA compartido Bienvenida ↔ Walkthrough slides
+ * Alto 48px, bottom→botón 88.33px, inset lateral simétrico 16px.
+ */
+.phone-shell {
+  --walkthrough-cta-height: 48px;
+  --walkthrough-cta-inset-bottom: 88.33px;
+  --walkthrough-cta-inset-x: var(--content-margin-x);
+  --walkthrough-cta-login-gap: 12px;
+  --walkthrough-cta-login-line: 18px;
+}
+
+.screen--walkthrough-1.is-active {
+  display: block;
+  height: var(--frame-min-height);
+}
+
+.walkthrough-hero {
+  position: relative;
+  width: 100%;
+  height: var(--frame-min-height);
+  overflow: hidden;
+  color: var(--color-neutral-50);
+}
+
+.walkthrough-hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Figma: h-full, left -65.65%, width 220.1% */
+.walkthrough-hero__photo {
+  position: absolute;
+  top: 0;
+  left: -65.65%;
+  width: 220.1%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Figma 13062:134 — gradiente vertical */
+.walkthrough-hero__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 29, 65, 0.02) 10%,
+    rgba(26, 29, 65, 0.2) 100%
+  );
+}
+
+/* Figma BarraSuperiorBack — top 60px */
+.walkthrough-hero__brand {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 37px;
+  padding: var(--spacer-2) var(--spacer-2) var(--spacer-2) var(--spacer-4);
+  z-index: 1;
+}
+
+.walkthrough-hero__logo {
+  position: relative;
+  width: 188px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.walkthrough-hero__logo-mark {
+  position: absolute;
+  top: 0;
+  left: 0.54%;
+  width: 17.65%;
+  height: 100%;
+  display: block;
+}
+
+.walkthrough-hero__logo-wordmark {
+  position: absolute;
+  top: 13.6%;
+  right: 0.44%;
+  bottom: 13.6%;
+  left: 21.17%;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+/* Texto + CTA centrados: mismo inset X a izquierda y derecha */
+.walkthrough-hero__content {
+  position: absolute;
+  left: var(--walkthrough-cta-inset-x);
+  right: var(--walkthrough-cta-inset-x);
+  bottom: calc(
+    var(--walkthrough-cta-inset-bottom) - var(--walkthrough-cta-login-line) -
+      var(--walkthrough-cta-login-gap)
+  );
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--walkthrough-cta-login-gap);
+  text-align: center;
+}
+
+.walkthrough-hero__title {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+  color: var(--color-neutral-50);
+}
+
+.walkthrough-hero__title-line {
+  display: block;
+}
+
+.walkthrough-hero__cta.btn--primary {
+  width: 100%;
+  height: var(--walkthrough-cta-height);
+  min-height: var(--walkthrough-cta-height);
+  border-radius: 8px;
+}
+
+.walkthrough-hero__login {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--walkthrough-cta-login-line);
+  text-align: center;
+  color: var(--color-neutral-50);
+}
+
+.walkthrough-hero__login-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.walkthrough-hero__login-link:hover,
+.walkthrough-hero__login-link:focus-visible {
+  color: inherit;
+}
+
+/* ── Walkthrough slides 1.1.3+ (Figma photo-block-hero + text-block) ── */
+
+.phone-shell--walkthrough-slide {
+  background: var(--background-page);
+}
+
+.screen--walkthrough-slide.is-active {
+  display: block;
+  height: var(--frame-min-height);
+}
+
+.walkthrough-slide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--frame-min-height);
+  background: var(--background-page);
+}
+
+.walkthrough-slide__skip {
+  position: absolute;
+  top: 29px;
+  right: var(--spacer-4);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  padding: var(--spacer-1) var(--spacer-3);
+  border: 1px solid var(--color-neutral-50);
+  border-radius: var(--pill-radius);
+  background: rgba(255, 255, 255, 0.02);
+  font-family: var(--font-family-default);
+  font-size: 10px;
+  font-weight: var(--body-xs-weight);
+  line-height: 1;
+  color: var(--color-neutral-50);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.walkthrough-slide__hero {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  height: 326px;
+  overflow: hidden;
+  clip-path: var(--walkthrough-hero-clip);
+  -webkit-clip-path: var(--walkthrough-hero-clip);
+  background: var(--background-page);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.walkthrough-slide__hero-photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+}
+
+.walkthrough-slide__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: var(--spacer-4);
+  background: var(--background-page);
+}
+
+.walkthrough-slide__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-3);
+  padding: var(--spacer-4) 0;
+}
+
+.walkthrough-slide__title {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-md-size);
+  font-weight: var(--heading-md-weight);
+  line-height: 34px;
+  text-align: center;
+  color: var(--color-brand-600);
+}
+
+.walkthrough-slide__title-line {
+  display: block;
+}
+
+.walkthrough-slide__subtitle {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  text-align: center;
+  color: var(--color-neutral-1000);
+}
+
+.walkthrough-slide__description {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  text-align: center;
+  color: var(--color-neutral-500);
+}
+
+.walkthrough-slide__actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--walkthrough-cta-inset-x) var(--walkthrough-cta-inset-bottom);
+}
+
+.walkthrough-slide__cta.btn--primary {
+  width: 100%;
+  max-width: none;
+  height: var(--walkthrough-cta-height);
+  min-height: var(--walkthrough-cta-height);
+  border-radius: 8px;
+}
+
+/* ── 1.1.8 / 1.1.9 — Crear cuenta (Figma 13065:8234) ── */
+
+.phone-shell--signup {
+  background: var(--background-page);
+}
+
+.screen--signup.is-active {
+  display: flex;
+  flex-direction: column;
+  height: var(--frame-min-height);
+  min-height: var(--frame-min-height);
+}
+
+.signup-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--background-page);
+}
+
+.signup-screen__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.signup-screen__content {
+  padding: var(--screen-title-offset-top) var(--content-margin-x) var(--spacer-5);
+}
+
+.signup-screen__title {
+  max-width: var(--content-width);
+  margin: 0 auto var(--spacer-5);
+  text-align: left;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-5);
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0;
+}
+
+.signup-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-3);
+}
+
+.signup-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+}
+
+.signup-field__label {
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: 18px;
+  color: var(--color-neutral-1000);
+}
+
+.signup-field__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.signup-field__input {
+  width: 100%;
+  min-height: var(--button-min-height);
+  padding: 15px 13px;
+  border: 2px solid var(--border-default);
+  border-radius: 8px;
+  background: var(--background-default);
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: 18px;
+  color: var(--color-neutral-1000);
+  outline: none;
+}
+
+.signup-field__input--password {
+  padding-right: 44px;
+}
+
+.signup-field__input::placeholder {
+  color: var(--color-neutral-400);
+}
+
+.signup-field__input:focus {
+  border-color: var(--color-brand-600);
+}
+
+.signup-field--error .signup-field__input {
+  border-color: var(--color-danger-border);
+}
+
+.signup-field--error .signup-field__input:focus {
+  border-color: var(--color-danger-border);
+}
+
+.signup-field__error[hidden] {
+  display: none;
+}
+
+.signup-field__error-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.signup-field__error-link:hover,
+.signup-field__error-link:focus-visible {
+  color: inherit;
+}
+
+.walkthrough-slide__skip[hidden] {
+  display: none;
+}
+
+.signup-field__toggle {
+  position: absolute;
+  right: var(--spacer-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-neutral-500);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.signup-field__error {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-xs-size);
+  font-weight: var(--body-xs-weight);
+  line-height: var(--body-xs-line);
+  color: var(--color-danger-default);
+}
+
+.signup-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-3);
+}
+
+.signup-form__submit.btn--primary {
+  border-radius: 8px;
+}
+
+.signup-form__privacy {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-xs-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-xs-line);
+  text-align: center;
+  color: var(--color-neutral-500);
+}
+
+.signup-form__privacy a {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: var(--color-brand-600);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.signup-form__divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--border-default);
+}
+
+.signup-form__social {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.signup-form__social-btn.btn--secondary {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-2);
+  border-radius: 8px;
+  background: var(--background-default);
+}
+
+.signup-form__social-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.signup-form__social-icon img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.signup-form__social-label {
+  line-height: var(--body-sm-strong-line);
+}
+
+.signup-screen__footer {
+  flex-shrink: 0;
+  padding: var(--spacer-4) var(--content-margin-x) 40px;
+  background: var(--background-page);
+}
+
+.signup-screen__login {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  text-align: center;
+  color: var(--color-neutral-1000);
+}
+
+.signup-screen__login-link {
+  color: var(--color-brand-600);
+  font-weight: var(--body-md-weight);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+/* Modal mock — Continuar con Google / Apple */
+.social-login-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.social-login-modal[hidden] {
+  display: none;
+}
+
+.social-login-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(17, 17, 17, 0.45);
+  cursor: pointer;
+}
+
+.social-login-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 12px var(--content-margin-x) calc(var(--spacer-5) + 16px);
+  background: var(--background-default);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.social-login-modal__handle {
+  width: 95px;
+  height: 4px;
+  margin: 0 auto var(--spacer-4);
+  border-radius: 2px;
+  background: var(--color-neutral-300);
+}
+
+.social-login-modal__title {
+  margin: 0 0 var(--spacer-3);
+  font-family: var(--font-family-default);
+  font-size: var(--heading-sm-size);
+  font-weight: var(--heading-sm-weight);
+  line-height: var(--heading-sm-line);
+  text-align: center;
+  color: var(--content-default);
+}
+
+.social-login-modal__body {
+  margin: 0 0 var(--spacer-5);
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  text-align: center;
+  color: var(--color-neutral-600);
+}
+
+.social-login-modal__actions {
+  width: 100%;
+}

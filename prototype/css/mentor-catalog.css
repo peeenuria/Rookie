@@ -1,0 +1,156 @@
+/* Historia 4.1.2 — Catálogo de mentores (Figma 12528:42310) */
+
+.phone-shell--mentor-catalog {
+  background: var(--background-page);
+}
+
+/* El scroll lo lleva el carrusel, no el shell */
+.phone-shell--mentor-catalog .phone-shell__scroll {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.screen--catalog.is-active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  position: relative;
+}
+
+.mentor-catalog {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  padding-bottom: var(--spacer-5);
+}
+
+/* Reserva espacio para BarraSuperiorBack (absolute, top:30px) — mismo patrón
+   que plan-selection / consent / code-manual / perfilado. */
+.mentor-catalog__stepper-wrap {
+  flex-shrink: 0;
+  padding: var(--screen-title-offset-top) var(--content-margin-x) 0;
+}
+
+.mentor-catalog__stepper-wrap .profiling-stepper {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+/* Mismo patrón que Motivaciones / Info personal: intro a la izquierda */
+.mentor-catalog__header {
+  flex-shrink: 0;
+  padding: var(--spacer-4) var(--content-margin-x) 0;
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* ── Carrusel vertical (swipe + snap) ── */
+.mentor-catalog__list-wrap.mentor-carousel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-inline: var(--content-margin-x);
+  padding-block: 0;
+  scroll-snap-type: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  outline: none;
+  touch-action: none;
+}
+
+.mentor-catalog__list-wrap.mentor-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.mentor-catalog__list-wrap.mentor-carousel.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.mentor-catalog__list-wrap.mentor-carousel.is-dragging.is-moved .mentor-card {
+  pointer-events: none;
+}
+
+.mentor-carousel__track.mentor-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--mentor-carousel-gap);
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  /* Top: mismo gap que stepper→título (--spacer-4). Bottom: centra última card */
+  padding-top: var(--carousel-pad-top, var(--spacer-4));
+  padding-bottom: var(--carousel-pad-bottom, var(--carousel-pad, var(--mentor-carousel-side-peek)));
+  padding-inline: 0;
+  box-sizing: content-box;
+}
+
+.mentor-carousel__track .mentor-item {
+  flex: 0 0 auto;
+  width: 100%;
+  transform: scale(var(--mentor-card-scale, var(--mentor-carousel-side-scale)));
+  opacity: var(--mentor-card-opacity, var(--mentor-carousel-side-opacity));
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition:
+    transform var(--mentor-carousel-focus-duration) var(--mentor-carousel-focus-ease),
+    opacity var(--mentor-carousel-focus-duration) var(--mentor-carousel-focus-ease);
+}
+
+.mentor-carousel.is-dragging .mentor-item,
+.mentor-carousel.is-snapping .mentor-item {
+  transition: none;
+}
+
+.mentor-carousel__track .mentor-item .mentor-card {
+  width: 100%;
+}
+
+/* Stepper variante Mentores — estados vía is-done / is-active (profiling.css) */
+.profiling-stepper--mentores .profiling-stepper__step:nth-child(3).is-active .profiling-stepper__icon {
+  background-color: transparent;
+  color: var(--color-brand-600);
+}
+
+/* Placeholder continuar mentor */
+.screen--mentor-continue-stub.is-active {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: var(--spacer-5);
+}
+
+.mentor-stub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer-5);
+  max-width: 320px;
+  text-align: center;
+}
+
+.mentor-stub__message {
+  margin: 0;
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mentor-carousel__track .mentor-item {
+    transition: none;
+  }
+}

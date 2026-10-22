@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rookie — ResumenSuscripción · 4 variantes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" />
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/subscription-summary.css" />
+  </head>
+  <body>
+    <main class="subscription-summary-demo">
+      <header class="subscription-summary-demo__header">
+        <h1 class="subscription-summary-demo__title">ResumenSuscripción</h1>
+        <p class="subscription-summary-demo__subtitle">
+          Figma 13105:7394 · propiedad1: Ninguno, Mensual, Anual, Promoción Rookie
+        </p>
+      </header>
+
+      <div class="subscription-summary-demo__grid">
+        <section class="subscription-summary-demo__item">
+          <p class="subscription-summary-demo__label">Ninguno</p>
+          <div class="subscription-summary-demo__preview">
+            <div class="subscription-summary" id="summary-none" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="subscription-summary-demo__item">
+          <p class="subscription-summary-demo__label">Mensual</p>
+          <div class="subscription-summary-demo__preview">
+            <div class="subscription-summary" id="summary-monthly" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="subscription-summary-demo__item">
+          <p class="subscription-summary-demo__label">Anual (2 líneas)</p>
+          <div class="subscription-summary-demo__preview">
+            <div class="subscription-summary" id="summary-annual" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="subscription-summary-demo__item">
+          <p class="subscription-summary-demo__label">Promoción Rookie</p>
+          <div class="subscription-summary-demo__preview">
+            <div class="subscription-summary" id="summary-rookie-promo" aria-live="polite"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="../js/figma-1-3-spec.js"></script>
+    <script src="../js/subscription-summary.js"></script>
+    <script>
+      (function () {
+        if (!window.SubscriptionSummary) return;
+        SubscriptionSummary.apply(document.getElementById('summary-none'), null);
+        SubscriptionSummary.apply(document.getElementById('summary-monthly'), 'monthly');
+        SubscriptionSummary.apply(document.getElementById('summary-annual'), 'annual');
+        SubscriptionSummary.apply(document.getElementById('summary-rookie-promo'), 'rookie-promo');
+      })();
+    </script>
+  </body>
+</html>

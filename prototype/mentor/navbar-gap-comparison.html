@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar — gap icono/texto antes/después</title>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: var(--font-family-default);
+        background: #e8e8e8;
+      }
+      h1 {
+        font-size: 16px;
+        margin: 0 0 16px;
+        color: var(--content-default);
+      }
+      .compare {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 393px;
+      }
+      .compare__panel {
+        background: #fff;
+        border: 1px solid var(--border-default);
+      }
+      .compare__label {
+        padding: 8px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--color-neutral-600);
+        border-bottom: 1px solid var(--border-default);
+      }
+      .phone {
+        width: 393px;
+        position: relative;
+        height: 80px;
+        background: var(--color-neutral-100);
+      }
+      /* ANTES — wrap 40px + line-height 20px (problema) */
+      .navbar--before .navbar__tab-icon-wrap {
+        width: 40px;
+        height: 40px;
+      }
+      .navbar--before .navbar__tab {
+        line-height: 20px;
+      }
+      .navbar--before .navbar__tab-label {
+        line-height: 20px;
+      }
+      /* DESPUÉS — ya en components.css (wrap 24px, line-height tight) */
+    </style>
+  </head>
+  <body>
+    <h1>Navbar — espacio icono / texto</h1>
+    <div class="compare">
+      <div class="compare__panel">
+        <p class="compare__label">ANTES — wrap 40×40 px + line-height 20 px (~12 px visual)</p>
+        <div class="phone">
+          <nav class="navbar navbar--before" aria-label="Antes">
+            <div class="navbar__tabs">
+              <button type="button" class="navbar__tab is-active">
+                <span class="navbar__tab-icon-wrap">
+                  <img
+                    class="navbar__tab-icon"
+                    src="../assets/icons/navbar/b18d29445316a35eef0466d0f6b1c75fe772717d.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                  />
+                </span>
+                <span class="navbar__tab-label">Inicio</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="compare__panel">
+        <p class="compare__label">DESPUÉS — wrap 24×24 px + gap 8 px + line-height 14 px</p>
+        <div class="phone">
+          <nav class="navbar" aria-label="Después">
+            <div class="navbar__tabs">
+              <button type="button" class="navbar__tab is-active">
+                <span class="navbar__tab-icon-wrap">
+                  <img
+                    class="navbar__tab-icon"
+                    src="../assets/icons/navbar/b18d29445316a35eef0466d0f6b1c75fe772717d.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                  />
+                </span>
+                <span class="navbar__tab-label">Inicio</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

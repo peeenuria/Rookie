@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar — mancha circular (demo)</title>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #e8e8e8;
+        font-family: var(--font-family-default);
+      }
+      h1 {
+        font-size: 16px;
+        margin: 0 0 16px;
+      }
+      .demos {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .demo__label {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--color-neutral-600);
+        margin: 0 0 8px;
+      }
+      .demo__mock {
+        position: absolute;
+        top: 24px;
+        left: 16px;
+        right: 16px;
+        bottom: var(--navbar-height);
+        overflow: hidden;
+      }
+      .demo__mock h2 {
+        margin: 0;
+        font-size: var(--heading-lg-size);
+        line-height: var(--heading-lg-line);
+        text-align: center;
+      }
+      .demo__mock p {
+        margin: 12px 0 0;
+        text-align: center;
+        color: var(--color-neutral-600);
+        font-size: var(--body-md-size);
+      }
+      .demo__card {
+        margin-top: 24px;
+        height: 120px;
+        background: var(--color-neutral-100);
+        border: 1px solid var(--border-default);
+      }
+      .demo__card--lila {
+        margin-top: 16px;
+        height: 200px;
+        background: linear-gradient(135deg, var(--color-brand-100) 55%, transparent 55%);
+        border: 1px solid var(--border-default);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Navbar — mancha circular al tocar</h1>
+    <div class="demos">
+      <div>
+        <p class="demo__label">4.1 Plan listo — tap en «Progreso»</p>
+        <div class="phone-shell" id="demo-plan">
+          <div class="phone-shell__body">
+            <div class="demo__mock">
+              <h2>Tu plan está listo, Pedro</h2>
+              <p>3 sesiones por semana · 2 kilómetros</p>
+              <div class="demo__card" aria-hidden="true"></div>
+            </div>
+            <div
+              class="phone-shell__navbar"
+              data-navbar
+              data-navbar-active=""
+              data-navbar-assets="../assets/icons/navbar"
+              data-stain-tab="progreso"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="demo__label">4.3 Home inicial — tap en «Sesión»</p>
+        <div class="phone-shell" id="demo-home">
+          <div class="phone-shell__body">
+            <div class="demo__mock">
+              <h2>¡Hola, <span style="color: var(--color-brand-600)">Pedro</span>!</h2>
+              <p>Tu cita con Laura es hoy</p>
+              <div class="demo__card--lila" aria-hidden="true"></div>
+            </div>
+            <div
+              class="phone-shell__navbar"
+              data-navbar
+              data-navbar-active="inicio"
+              data-navbar-assets="../assets/icons/navbar"
+              data-stain-tab="sesion"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/navbar.js"></script>
+    <script>
+      function applyDemoStains() {
+        document.querySelectorAll('[data-stain-tab]').forEach((mount) => {
+          const tabId = mount.dataset.stainTab;
+          const tab = mount.querySelector(`[data-nav-id="${tabId}"]`);
+          if (!tab) return;
+          const stain = document.createElement('span');
+          stain.className = 'navbar__stain is-visible';
+          stain.setAttribute('aria-hidden', 'true');
+          tab.insertBefore(stain, tab.firstChild);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        requestAnimationFrame(applyDemoStains);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+/* Celebración 4.2.5 — check progresivo + confetti sutil */
+.appointment-confirmed__hero {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.appointment-confirmed__confetti {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.appointment-confirmed__check {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--content-on-brand);
+  pointer-events: none;
+}
+
+.appointment-confirmed__check-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.appointment-confirmed__check-path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.appointment-confirmed__confetti-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size, 6px);
+  height: var(--size, 6px);
+  border-radius: var(--radius, 50%);
+  background: var(--particle-color, var(--color-brand-600));
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.appointment-confirmed__check--playing .appointment-confirmed__check-path--arc {
+  animation: appointment-check-draw-arc 520ms ease-out forwards;
+}
+
+.appointment-confirmed__check--playing .appointment-confirmed__check-path--tick {
+  animation: appointment-check-draw-tick 480ms ease-out 360ms forwards;
+}
+
+.appointment-confirmed__confetti--playing .appointment-confirmed__confetti-particle {
+  animation: appointment-confetti-burst var(--duration, 1.8s) cubic-bezier(0.22, 0.61, 0.36, 1)
+    var(--delay, 0ms) forwards;
+}
+
+@keyframes appointment-check-draw-arc {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes appointment-check-draw-tick {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes appointment-confetti-burst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(0.35);
+  }
+  7% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) translate(var(--burst-x), var(--burst-y)) rotate(var(--rot-mid))
+      scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--fall-x), var(--fall-y)) rotate(var(--rot-end))
+      scale(0.55);
+  }
+}
+
+.appointment-confirmed__check--done .appointment-confirmed__check-path {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appointment-confirmed__check--playing .appointment-confirmed__check-path--arc,
+  .appointment-confirmed__check--playing .appointment-confirmed__check-path--tick,
+  .appointment-confirmed__confetti--playing .appointment-confirmed__confetti-particle {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+
+  .appointment-confirmed__check--playing .appointment-confirmed__check-path--arc,
+  .appointment-confirmed__check--playing .appointment-confirmed__check-path--tick {
+    opacity: 1;
+  }
+}

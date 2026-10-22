@@ -1,0 +1,114 @@
+/* CitaConfirmada — Pantalla de éxito, confirmación de 1ª cita (Figma 13694:16006) */
+
+.phone-shell--cita-confirmada {
+  background: var(--color-brand-600);
+}
+
+.phone-shell--cita-confirmada .phone-shell__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.screen--cita-confirmada.is-active,
+.CitaConfirmada {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-brand-600);
+}
+
+.CitaConfirmada__container {
+  width: 361px;
+  max-width: calc(100% - 32px);
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.CitaConfirmada__text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.CitaConfirmada__title {
+  margin: 0;
+  width: 100%;
+  font-size: var(--heading-lg-size, 36px);
+  font-weight: 600;
+  line-height: 44px;
+  color: var(--color-neutral-50);
+}
+
+.CitaConfirmada__subtitle {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-md-medium-size, 16px);
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-neutral-50);
+}
+
+.CitaConfirmada__card {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--color-neutral-50);
+  border-radius: 8px;
+}
+
+.CitaConfirmada__detail-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.CitaConfirmada__detail-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.CitaConfirmada__detail-text {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: var(--body-md-size);
+  line-height: 20px;
+  color: var(--color-neutral-1000);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.CitaConfirmada__actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.CitaConfirmada__continue {
+  min-height: 48px;
+  border-radius: 6px;
+}
+
+/* Antes se confundía con el fondo brand/600 (mismo color) — borde para
+   que destaque frente a los demás CTAs de la pantalla. */
+.CitaConfirmada__continue {
+  border: 1px solid var(--color-neutral-50);
+}

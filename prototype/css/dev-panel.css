@@ -1,0 +1,60 @@
+/* Solo para mentor/dev-spec.html o ?debug=true */
+.dev-panel {
+  max-width: var(--frame-width);
+  margin: 24px auto 0;
+  padding: var(--spacer-4);
+  background: var(--background-default);
+  border: 1px solid var(--border-default);
+  font-size: var(--body-xs-size);
+  line-height: var(--body-xs-line);
+}
+
+.dev-panel h2 {
+  margin: 0 0 12px;
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+}
+
+.dev-panel dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px 12px;
+}
+
+.dev-panel dt {
+  color: var(--color-neutral-500);
+}
+
+.dev-panel dd {
+  margin: 0;
+}
+
+.app-viewport:has(.dev-panel) {
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dev-panel__section {
+  margin-top: var(--spacer-4);
+  padding-top: var(--spacer-4);
+  border-top: 1px solid var(--border-default);
+}
+
+.dev-panel__nav-label {
+  margin: var(--spacer-3) 0 var(--spacer-2);
+  font-size: var(--body-sm-size);
+  color: var(--color-neutral-600);
+}
+
+.dev-panel__links {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: var(--body-sm-size);
+}
+
+.dev-panel__links a {
+  color: var(--color-brand-600);
+}

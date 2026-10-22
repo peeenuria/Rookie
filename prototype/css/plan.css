@@ -1,0 +1,203 @@
+/**
+ * Historia 1.3 — Selección de plan (Figma 13131:122287)
+ */
+
+.phone-shell--plan {
+  background: var(--background-page);
+}
+
+.screen--plan-selection.is-active {
+  display: flex;
+  flex-direction: column;
+  height: var(--frame-min-height);
+  min-height: var(--frame-min-height);
+  background: var(--background-page);
+  position: relative;
+}
+
+.plan-selection {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: var(--screen-title-offset-top) 15px var(--spacer-5);
+  position: relative;
+}
+
+.plan-selection__header {
+  flex-shrink: 0;
+  margin-bottom: var(--spacer-5);
+}
+
+.plan-selection__title {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-md-size);
+  font-weight: var(--heading-md-weight);
+  line-height: var(--heading-md-line);
+  color: var(--color-neutral-1000);
+}
+
+.plan-selection__subtitle {
+  margin: var(--spacer-3) 0 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--color-neutral-500);
+}
+
+.plan-selection__cards {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacer-5);
+  min-height: 0;
+}
+
+.plan-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: var(--spacer-5) var(--spacer-4);
+  border: 2px solid var(--border-default);
+  border-radius: var(--spacer-2);
+  background: var(--color-neutral-100);
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.plan-card:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+}
+
+.plan-card.is-selected {
+  border-color: var(--color-brand-600);
+  background: var(--background-default);
+}
+
+.plan-card__badge {
+  position: absolute;
+  top: calc(-1 * var(--spacer-2));
+  right: var(--spacer-3);
+  padding: var(--spacer-1) var(--spacer-2);
+  border-radius: var(--pill-radius);
+  background: var(--color-brand-600);
+  color: var(--content-on-brand);
+  font-family: var(--font-family-default);
+  font-size: var(--body-xs-size);
+  font-weight: 600;
+  line-height: var(--body-xs-line);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.plan-card__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacer-3);
+}
+
+.plan-card__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacer-1);
+  min-width: 0;
+}
+
+.plan-card__name {
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-medium-size);
+  font-weight: var(--body-md-medium-weight);
+  line-height: var(--body-md-medium-line);
+  color: var(--color-neutral-1000);
+}
+
+.plan-card__detail {
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-500);
+}
+
+.plan-card__pricing {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacer-1);
+  text-align: right;
+}
+
+.plan-card__price {
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-medium-size);
+  font-weight: var(--body-md-medium-weight);
+  line-height: var(--body-md-medium-line);
+  color: var(--color-brand-600);
+  white-space: nowrap;
+}
+
+.plan-card__price-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.plan-card__price-line {
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-medium-size);
+  font-weight: var(--body-md-medium-weight);
+  line-height: var(--body-md-medium-line);
+  color: var(--color-brand-600);
+}
+
+.plan-card__note {
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-1000);
+}
+
+.plan-card--promo {
+  padding-top: calc(var(--spacer-5) + var(--spacer-1));
+}
+
+.plan-selection__footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-3);
+  margin-top: var(--spacer-5);
+}
+
+.plan-selection__hint {
+  text-align: center;
+}
+
+.plan-selection__submit.btn--primary {
+  border-radius: 8px;
+}
+
+.plan-selection__note {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-xs-size);
+  font-weight: var(--body-xs-weight);
+  line-height: var(--body-xs-line);
+  text-align: center;
+  color: var(--color-neutral-500);
+}

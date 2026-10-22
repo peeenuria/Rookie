@@ -1,0 +1,194 @@
+/* SecciónMentor — "Mi Mentor" (Figma 13707:13164) */
+
+.phone-shell--mi-mentor {
+  position: relative;
+  background: var(--color-neutral-100);
+}
+
+.phone-shell--mi-mentor .phone-shell__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding-bottom: var(--navbar-height);
+}
+
+.screen--mi-mentor.is-active,
+.SeccionMentor {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  background: var(--color-neutral-100);
+}
+
+.SeccionMentor__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.SeccionMentor__hero {
+  width: 100%;
+  height: 326px;
+  flex-shrink: 0;
+}
+
+.SeccionMentor__hero-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.SeccionMentor__text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+}
+
+.SeccionMentor__assigned-label {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-lg-size);
+  line-height: 22px;
+  color: var(--color-neutral-1000);
+  text-align: center;
+}
+
+.SeccionMentor__name {
+  margin: 0;
+  width: 100%;
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-brand-600);
+  text-align: center;
+}
+
+.SeccionMentor__specialty {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-xs-size);
+  line-height: 16px;
+  color: var(--color-neutral-1000);
+}
+
+.SeccionMentor__bio {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-xs-size);
+  line-height: 16px;
+  color: var(--color-neutral-500);
+}
+
+.SeccionMentor__pills {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.SeccionMentor__outing-days {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-xs-size);
+  line-height: 16px;
+  color: var(--color-neutral-500);
+}
+
+/* ── CardSalidaGrupal (Figma 13707:13144) ── */
+.CardSalidaGrupal {
+  width: 100%;
+  height: 221px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background: var(--color-neutral-50);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.CardSalidaGrupal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  width: 201px;
+  padding: 20px;
+}
+
+.CardSalidaGrupal__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+}
+
+.CardSalidaGrupal__title {
+  margin: 0;
+  width: 100%;
+  font-size: var(--heading-md-size);
+  font-weight: 600;
+  line-height: 34px;
+  color: var(--color-neutral-1000);
+}
+
+.CardSalidaGrupal__name {
+  margin: 0;
+  width: 100%;
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-brand-600);
+}
+
+.CardSalidaGrupal__details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 12px;
+}
+
+.CardSalidaGrupal__detail-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.CardSalidaGrupal__detail-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.CardSalidaGrupal__detail-text {
+  margin: 0;
+  flex: 1;
+  font-size: 10px;
+  line-height: 1.0009;
+  color: var(--color-neutral-500);
+}
+
+.CardSalidaGrupal__photo-wrap {
+  flex-shrink: 0;
+  width: 160px;
+  height: 221px;
+}
+
+.CardSalidaGrupal__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

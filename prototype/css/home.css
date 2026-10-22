@@ -1,0 +1,923 @@
+/* Home — Inicio (Figma 13186:5008) */
+
+.phone-shell--home {
+  position: relative;
+  background: var(--background-page);
+}
+
+.phone-shell--home .phone-shell__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding-bottom: var(--navbar-height);
+}
+
+.screen--home-inicio.is-active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-inicio {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  background: var(--background-page);
+}
+
+/* ── WeekSelector ── */
+.WeekSelector {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 40px 16px 12px;
+  background: var(--background-default);
+  border-bottom: 1px solid var(--color-neutral-500);
+}
+
+.WeekSelector__toolbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 362px;
+  min-height: 24px;
+  margin-bottom: 0;
+}
+
+.WeekSelector__icon-btn {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.WeekSelector__icon-btn--plus {
+  left: 0;
+}
+
+.WeekSelector__icon-btn--filters {
+  right: 0;
+}
+
+.WeekSelector__icon-btn img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.WeekSelector__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 24px;
+}
+
+.WeekSelector__nav-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 24px;
+}
+
+.WeekSelector__nav-btn {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.WeekSelector__nav-chevron-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+}
+
+.WeekSelector__label {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.WeekSelector__days {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 362px;
+  padding-top: 16px;
+  min-height: 110px;
+}
+
+/* ── DayPill ── */
+.DayPill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer-1);
+  width: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.DayPill__letter {
+  margin: 0;
+  padding: 0 var(--spacer-1);
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-strong-line);
+  color: var(--color-neutral-500);
+  text-align: center;
+}
+
+.DayPill__circle-wrap {
+  position: relative;
+  width: 44px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.DayPill__circle {
+  position: absolute;
+  inset: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+}
+
+.DayPill__circle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.DayPill__number {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: 40px;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-neutral-500);
+  text-align: center;
+}
+
+.DayPill.is-selected .DayPill__number {
+  width: 44px;
+  color: var(--color-neutral-50);
+}
+
+.DayPill__dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+.DayPill__dot img {
+  display: block;
+  width: 8px;
+  height: 8px;
+}
+
+.DayPill__dot--empty {
+  visibility: hidden;
+}
+
+.DayPill.is-disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Scroll body ── */
+.home-inicio__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+}
+
+.home-inicio__scroll-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+  padding: 10px;
+  padding-bottom: var(--spacer-4);
+}
+
+.home-inicio__saludo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-height: 74px;
+  padding: 12px 0;
+  text-align: center;
+}
+
+.home-inicio__saludo-title {
+  margin: 0 0 6px;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-md-size);
+  font-weight: var(--heading-md-weight);
+  line-height: 34px;
+  color: var(--content-default);
+}
+
+.home-inicio__saludo-phrase {
+  margin: 0;
+  padding: 0 10px;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--color-neutral-500);
+}
+
+.home-inicio__block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.home-inicio__block-title {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-lg-size);
+  font-weight: 700;
+  line-height: 22px;
+  color: var(--content-default);
+}
+
+/* ── SessionTodayCard ── */
+.SessionTodayCard[data-session-type="running"] {
+  cursor: pointer;
+}
+
+.SessionTodayCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 230px;
+  padding: 16px;
+  border-left: 12px solid var(--color-brand-200);
+  border-radius: 8px;
+  background: var(--background-default);
+  overflow: hidden;
+}
+
+.SessionTodayCard__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  align-items: stretch;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.SessionTodayCard__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.SessionTodayCard__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  max-width: 219px;
+}
+
+.SessionTodayCard__date {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-500);
+}
+
+.SessionTodayCard__title {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-md-size);
+  font-weight: var(--heading-md-weight);
+  line-height: 34px;
+  color: var(--content-default);
+}
+
+/* Solo estado — no es interactivo, lo marca el sistema (tracking real) */
+.SessionTodayCard__checkbox {
+  display: block;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  background: var(--background-default);
+}
+
+.SessionTodayCard__checkbox.is-checked {
+  border-color: var(--color-brand-600);
+  background: var(--color-brand-600);
+  background-image: url('../assets/figma/f4c861f396d0042cd624c623d01e71dc98a2ebf7.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+}
+
+.SessionTodayCard__divider {
+  display: block;
+  width: 100%;
+  max-width: 282px;
+  height: 1px;
+  margin: 0;
+  border: none;
+}
+
+.SessionTodayCard__meta {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+}
+
+.SessionTodayCard__stat {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 80px;
+  padding: 10px;
+  text-align: center;
+}
+
+.SessionTodayCard__stat-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.SessionTodayCard__stat-value {
+  margin: 0;
+  width: 100%;
+  min-height: 47px;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-brand-1000);
+  white-space: nowrap;
+}
+
+.SessionTodayCard__stat-label {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-500);
+}
+
+.SessionTodayCard--descanso,
+.SessionTodayCard[data-session-type="descanso"] {
+  min-height: 230px;
+  border-left-color: var(--color-brand-600);
+  background: var(--color-brand-100);
+  cursor: default;
+}
+
+.SessionTodayCard__body--descanso {
+  justify-content: space-between;
+  height: 198px;
+  min-height: 198px;
+}
+
+.SessionTodayCard__header--descanso {
+  flex: 1;
+  justify-content: center;
+}
+
+.SessionTodayCard__text--descanso {
+  flex: 1;
+  justify-content: center;
+  max-width: none;
+  width: 100%;
+}
+
+.SessionTodayCard__divider--descanso {
+  max-width: 293px;
+}
+
+.SessionTodayCard__message {
+  display: flex;
+  width: 100%;
+  max-width: 293px;
+}
+
+.SessionTodayCard__message-text {
+  margin: 0;
+  min-height: 47px;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-500);
+}
+
+/* ── Skeleton SessionTodayCard (Figma 12641:2443) ── */
+.SessionTodayCard--skeleton {
+  pointer-events: none;
+  cursor: default;
+  border-left-color: var(--color-neutral-300);
+}
+
+.SessionTodayCard__body--skeleton {
+  gap: 6px;
+}
+
+.SessionTodayCard__header--skeleton {
+  align-items: flex-end;
+}
+
+.SessionTodayCard__text--skeleton {
+  max-width: none;
+  flex: 1;
+}
+
+.SessionTodayCard__meta--skeleton {
+  gap: 10px;
+}
+
+.SessionTodayCard__skeleton-divider {
+  max-width: 282px;
+}
+
+.home-inicio__block .EstadoSinConexion,
+.home-inicio__block .offline-panel {
+  margin-top: 0;
+}
+
+.home-inicio--offline .MentorAppointmentCard__join:disabled {
+  background: var(--background-disabled);
+  color: var(--content-on-brand);
+  cursor: not-allowed;
+}
+
+.SessionTodayCard--empty {
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  border-left-color: var(--color-neutral-300);
+}
+
+.SessionTodayCard__empty-text {
+  margin: 0;
+  padding: 0 24px;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-500);
+  text-align: center;
+}
+
+/* ── MentorAppointmentCard ── */
+.MentorAppointmentCard {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: var(--content-width);
+  min-height: 200px;
+  border-radius: 8px;
+  background: var(--background-default);
+  overflow: hidden;
+}
+
+.MentorAppointmentCard__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+  width: 201px;
+  min-height: 200px;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.MentorAppointmentCard__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+
+.MentorAppointmentCard__prefix {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-md-size);
+  font-weight: var(--heading-md-weight);
+  line-height: 34px;
+  color: var(--content-default);
+}
+
+.MentorAppointmentCard__name {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  line-height: var(--heading-sm-line);
+  color: var(--color-brand-600);
+}
+
+.MentorAppointmentCard__datetime {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-xs-size);
+  font-weight: var(--body-xs-weight);
+  line-height: var(--body-xs-line);
+  color: var(--color-neutral-500);
+}
+
+.MentorAppointmentCard__actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 0;
+  width: 100%;
+}
+
+.MentorAppointmentCard__join {
+  width: 127px;
+  min-height: 41px;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+.MentorAppointmentCard__photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 160px;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.MentorAppointmentCard__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* ── BiweeklyGoalsCard ── */
+.BiweeklyGoalsCard {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--background-default);
+  overflow: hidden;
+}
+
+.BiweeklyGoalsCard__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 12px 24px 8px;
+  list-style: none;
+}
+
+.BiweeklyGoalsCard__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Solo estado — no es interactivo, lo marca el sistema cuando detecta que
+   se cumplió la condición real del objetivo */
+.BiweeklyGoalsCard__checkbox {
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  background: var(--background-default);
+}
+
+.BiweeklyGoalsCard__checkbox.is-checked {
+  border-color: var(--color-brand-600);
+  background: var(--color-brand-600);
+  background-image: url('../assets/figma/f4c861f396d0042cd624c623d01e71dc98a2ebf7.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+}
+
+.BiweeklyGoalsCard__text {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: var(--body-sm-line);
+  color: var(--content-default);
+}
+
+.BiweeklyGoalsCard__text.is-checked {
+  color: var(--color-neutral-500);
+}
+
+/* Bloqueada — antes de completar la 1ª cita con el mentor (13648:7763) */
+.BiweeklyGoalsCard--locked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.BiweeklyGoalsCard__locked-text {
+  margin: 0;
+  padding: 0 24px;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-500);
+  text-align: center;
+}
+
+/* ── DiaSemanaEntrenoToggle (selección múltiple — Figma 13223:90703) ── */
+.DiaSemanaEntrenoToggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.DiaSemanaEntrenoToggle__circle {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.DiaSemanaEntrenoToggle__circle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.DiaSemanaEntrenoToggle__letter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-medium-size);
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-neutral-500);
+  pointer-events: none;
+}
+
+.DiaSemanaEntrenoToggle.is-selected .DiaSemanaEntrenoToggle__letter {
+  color: var(--color-neutral-50);
+}
+
+/* Límite de días alcanzado — días no seleccionados quedan bloqueados */
+.DiaSemanaEntrenoToggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* ── BottomSheetCambiarDias (Figma 13223:90986) ── */
+.BottomSheetCambiarDias {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.BottomSheetCambiarDias[hidden] {
+  display: none;
+}
+
+.BottomSheetCambiarDias:not([hidden]) {
+  pointer-events: auto;
+}
+
+.BottomSheetCambiarDias__backdrop {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.BottomSheetCambiarDias.is-visible .BottomSheetCambiarDias__backdrop {
+  opacity: 1;
+}
+
+.BottomSheetCambiarDias__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 342px;
+  padding: 24px;
+  background: var(--background-default);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.25);
+  transform: translateY(100%);
+  transition: transform 0.28s ease;
+}
+
+.BottomSheetCambiarDias.is-visible .BottomSheetCambiarDias__panel {
+  transform: translateY(0);
+}
+
+.BottomSheetCambiarDias__handle {
+  display: block;
+  width: 95px;
+  height: 4px;
+  margin: 10px auto 0;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background: var(--color-neutral-300);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.BottomSheetCambiarDias__close {
+  display: none;
+}
+
+.BottomSheetCambiarDias__close img {
+  display: none;
+}
+
+.BottomSheetCambiarDias__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.BottomSheetCambiarDias__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+.BottomSheetCambiarDias__title {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-neutral-1000);
+}
+
+.BottomSheetCambiarDias__subtitle {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+.BottomSheetCambiarDias__days {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 345px;
+}
+
+.BottomSheetCambiarDias__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  width: 100%;
+}
+
+.BottomSheetCambiarDias__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 17px;
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-xs-size);
+  font-weight: var(--body-xs-weight);
+  line-height: var(--body-xs-line);
+  text-align: center;
+  color: var(--color-danger-default);
+}
+
+.BottomSheetCambiarDias__error[hidden] {
+  display: none;
+}
+
+.BottomSheetCambiarDias__save {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 8px;
+}

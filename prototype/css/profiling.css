@@ -1,0 +1,490 @@
+/* Historia 1.4 — Perfilado */
+
+.phone-shell--profiling {
+  background: var(--background-page);
+}
+
+.screen--profiling-personal.is-active,
+.screen--profiling-motivations.is-active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Reserva espacio para BarraSuperiorBack (absolute, top:30px) — mismo patrón
+   que plan-selection / consent / code-manual. */
+.screen--profiling-personal .profiling-screen__stepper-wrap,
+.screen--profiling-motivations .profiling-screen__stepper-wrap {
+  padding-top: var(--screen-title-offset-top);
+}
+
+.screen--profiling-summary.is-active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+}
+
+.profiling-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--background-page);
+}
+
+.profiling-screen__stepper-wrap {
+  flex-shrink: 0;
+  padding: var(--spacer-4) var(--content-margin-x) 0;
+  background: var(--background-page);
+}
+
+/* Figma 12650:29593 — Stepper (adaptado a --content-width, no 390px fijo) */
+.profiling-stepper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.profiling-stepper__step {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px 24px;
+}
+
+.profiling-stepper__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 10px 8.333px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--background-disabled-secondary);
+  color: var(--color-neutral-500);
+  transition:
+    background-color 225ms ease-out,
+    color 225ms ease-out;
+}
+
+.profiling-stepper__icon svg {
+  width: 16.667px;
+  height: 16.667px;
+}
+
+/* Anillo activo (borde) vía ::after para poder desvanecerlo al completar */
+.profiling-stepper__icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.667px solid var(--color-brand-600);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 225ms ease-out;
+}
+
+.profiling-stepper__step.is-active .profiling-stepper__icon {
+  background-color: transparent;
+  color: var(--color-brand-600);
+}
+
+.profiling-stepper__step.is-active .profiling-stepper__icon::after {
+  opacity: 1;
+}
+
+.profiling-stepper__step.is-done .profiling-stepper__icon,
+.profiling-stepper__step.is-completing .profiling-stepper__icon,
+.profiling-stepper__step.is-active.is-completing .profiling-stepper__icon {
+  background-color: var(--color-brand-600);
+  color: var(--content-on-brand);
+}
+
+.profiling-stepper__step.is-done .profiling-stepper__icon::after,
+.profiling-stepper__step.is-completing .profiling-stepper__icon::after,
+.profiling-stepper__step.is-active.is-completing .profiling-stepper__icon::after {
+  opacity: 0;
+}
+
+.profiling-stepper__step.is-activating .profiling-stepper__icon {
+  animation: profiling-stepper-bounce 300ms ease-out;
+}
+
+.profiling-stepper__label {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-strong-line);
+  text-align: center;
+  white-space: nowrap;
+  color: #0d0b26;
+}
+
+/*
+  Conectores: 1px, detrás de iconos, entre bordes de iconos centrados
+  en columnas flex:1 (centros en 1/6, 1/2 y 5/6 del ancho).
+  top ≈ padding-top 16px + mitad icono 20px.
+*/
+.profiling-stepper__connector {
+  position: absolute;
+  top: calc(16px + 20px);
+  z-index: 0;
+  height: 1px;
+  width: calc(100% / 3 - 40px);
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--background-disabled-default);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.profiling-stepper__connector--left {
+  left: calc(100% / 6 + 20px);
+}
+
+.profiling-stepper__connector--right {
+  left: calc(50% + 20px);
+}
+
+.profiling-stepper__connector-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-brand-600);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.profiling-stepper__connector.is-active .profiling-stepper__connector-fill {
+  transform: scaleX(1);
+}
+
+.profiling-stepper__connector.is-animating-fill .profiling-stepper__connector-fill {
+  transform: scaleX(1);
+  transition: transform 350ms ease-out;
+}
+
+@keyframes profiling-stepper-bounce {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profiling-stepper__icon,
+  .profiling-stepper__icon::after,
+  .profiling-stepper__connector-fill {
+    transition: none !important;
+  }
+
+  .profiling-stepper__step.is-activating .profiling-stepper__icon {
+    animation: none;
+  }
+}
+
+.profiling-screen__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--spacer-4) var(--content-margin-x) var(--spacer-5);
+}
+
+.profiling-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.profiling-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+  width: 100%;
+}
+
+.profiling-field__label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-1);
+  min-height: 24px;
+}
+
+.profiling-field__label {
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-strong-line);
+  color: var(--content-default);
+}
+
+.profiling-field__required {
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-600);
+}
+
+.profiling-field__asterisk {
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: #aa1d16;
+}
+
+.profiling-field__input {
+  width: 100%;
+  height: 44px;
+  padding: var(--spacer-3) var(--spacer-2);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  background: var(--background-default);
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-strong-line);
+  color: var(--content-default);
+}
+
+.profiling-field__input::placeholder {
+  color: var(--color-neutral-500);
+  font-weight: var(--body-sm-strong-weight);
+}
+
+.profiling-field__input:focus {
+  outline: 2px solid var(--color-brand-300);
+  outline-offset: 0;
+  border-color: var(--color-brand-600);
+}
+
+.profiling-gender {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Figma GridDeGéneros */
+  width: 100%;
+}
+
+.profiling-gender__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Figma radio-list género */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+/* Estilos de fila/radio: OptionSelectRow (components.css — Figma 13556:47393) */
+
+.profiling-form__submit {
+  margin-top: var(--spacer-2);
+}
+
+.profiling-intro {
+  /* Tipografía: .screen-intro (components.css) */
+  max-width: 361px;
+  margin: 0 auto var(--spacer-3);
+}
+
+.profiling-questions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-3);
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.profiling-question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--background-default);
+}
+
+.profiling-question__label {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-strong-line);
+  color: var(--color-neutral-1000);
+}
+
+.profiling-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-2);
+  padding: 10px;
+}
+
+.profiling-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  min-height: 28px;
+  padding: 4px 12px;
+  border: 1px solid var(--color-neutral-500);
+  border-radius: 400px;
+  background: var(--background-default);
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--color-neutral-500);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.profiling-pill.is-selected {
+  background: var(--color-brand-600);
+  border-color: transparent;
+  color: var(--content-on-brand);
+  font-weight: 400;
+}
+
+.profiling-question__textarea-wrap {
+  padding: 0 10px 10px;
+}
+
+.profiling-question__textarea-wrap[hidden] {
+  display: none;
+}
+
+.profiling-question__textarea {
+  width: 100%;
+  min-height: 88px;
+  padding: var(--spacer-3);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  background: var(--background-default);
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--content-default);
+  resize: vertical;
+}
+
+.profiling-question__textarea:focus {
+  outline: 2px solid var(--color-brand-300);
+  outline-offset: 0;
+  border-color: var(--color-brand-600);
+}
+
+.profiling-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-4);
+  min-height: 320px;
+  padding: var(--spacer-5) var(--content-margin-x);
+  text-align: center;
+}
+
+.profiling-summary__title {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  line-height: var(--heading-sm-line);
+  color: var(--color-brand-600);
+}
+
+.profiling-summary__message {
+  margin: 0;
+  max-width: 320px;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--color-neutral-1000);
+}
+
+/* Día selector — reutiliza DiaSemanaEntrenoToggle (Figma 13223:90703) */
+.profiling-day-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacer-2);
+  width: 100%;
+  padding: 10px 0;
+}
+
+.DiaSemanaEntrenoToggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.DiaSemanaEntrenoToggle__circle {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.DiaSemanaEntrenoToggle__circle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.DiaSemanaEntrenoToggle__letter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-medium-size);
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-neutral-500);
+  pointer-events: none;
+}
+
+.DiaSemanaEntrenoToggle.is-selected .DiaSemanaEntrenoToggle__letter {
+  color: var(--color-neutral-50);
+}

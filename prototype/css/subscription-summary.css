@@ -1,0 +1,97 @@
+/**
+ * ResumenSuscripción — Figma 13105:7394
+ * Texto gris #757575, 12px regular, centrado
+ */
+
+.subscription-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-1);
+  min-height: 16px;
+  margin: 0;
+  text-align: center;
+}
+
+.subscription-summary--annual {
+  min-height: 44px; /* Figma ResumenSuscripcion Anual */
+}
+
+.subscription-summary__line {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-xs-size);
+  font-weight: var(--body-xs-weight);
+  line-height: var(--body-xs-line);
+  color: var(--color-neutral-500);
+  text-align: center;
+}
+
+.subscription-summary-demo {
+  min-height: 100vh;
+  padding: var(--spacer-6) var(--spacer-4);
+  background: var(--background-page);
+}
+
+.subscription-summary-demo__header {
+  max-width: 960px;
+  margin: 0 auto var(--spacer-5);
+  text-align: center;
+}
+
+.subscription-summary-demo__title {
+  margin: 0 0 var(--spacer-2);
+  font-family: var(--font-family-default);
+  font-size: var(--heading-sm-size);
+  font-weight: 700;
+  line-height: var(--heading-sm-line);
+  color: var(--color-neutral-1000);
+}
+
+.subscription-summary-demo__subtitle {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--color-neutral-500);
+}
+
+.subscription-summary-demo__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacer-5);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.subscription-summary-demo__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-3);
+  padding: var(--spacer-5);
+  border-radius: var(--spacer-2);
+  background: var(--background-default);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.subscription-summary-demo__label {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: 600;
+  line-height: var(--body-sm-line);
+  color: var(--color-neutral-600);
+  text-align: center;
+}
+
+.subscription-summary-demo__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding: var(--spacer-4);
+  border: 1px dashed var(--border-default);
+  border-radius: 8px;
+  background: var(--background-page);
+}

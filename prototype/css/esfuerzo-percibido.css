@@ -1,0 +1,213 @@
+﻿/* EsfuerzoPercibido — Figma 13556:2010 */
+
+.phone-shell--esfuerzo-percibido {
+  position: relative;
+  background: var(--color-neutral-100);
+}
+
+.phone-shell--esfuerzo-percibido .phone-shell__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.screen--esfuerzo-percibido.is-active,
+.EsfuerzoPercibido {
+  position: relative;
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+  background: var(--color-neutral-100);
+}
+
+/* Slot siempre en el flujo visual superior — mismo patrón que permisos.css */
+#esfuerzo-percibido-back-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 67px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+#esfuerzo-percibido-back-slot .BarraSuperiorBack,
+#esfuerzo-percibido-back-slot .BarraSuperiorBack__btn {
+  pointer-events: auto;
+}
+
+.EsfuerzoPercibido__content {
+  width: 100%;
+  max-width: 393px;
+  padding: var(--screen-title-offset-top) 10px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.EsfuerzoPercibido__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  width: 282px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-neutral-500);
+}
+
+.EsfuerzoPercibido__meta-type {
+  font-weight: 500;
+}
+
+.EsfuerzoPercibido__section {
+  width: 100%;
+}
+
+.EsfuerzoPercibido__title {
+  margin: 0 0 18px;
+  font-size: var(--heading-sm-size);
+  line-height: 28px;
+  letter-spacing: 0;
+  color: var(--content-default);
+}
+
+.MoodTracker__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px;
+}
+
+.MoodTracker__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.MoodTracker__icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.TalkTest {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.TalkTest__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Estilos de fila/radio: OptionSelectRow (components.css — Figma 13556:47393) */
+
+.MentorNote__field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.MentorNote__field {
+  width: 100%;
+  min-height: 150px;
+  padding: 18px 16px;
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  background: var(--background-default);
+  font-family: var(--font-family-default);
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--content-default);
+  resize: none;
+}
+
+.MentorNote__field::placeholder {
+  color: var(--content-default-tertiary, var(--color-neutral-500));
+}
+
+.EsfuerzoPercibido__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.EsfuerzoPercibido__submit {
+  min-height: 48px;
+  border-radius: 8px;
+}
+
+.EsfuerzoPercibido__skip {
+  min-height: 48px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-family-default);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--content-default);
+  cursor: pointer;
+}
+
+/* Guardando sesión — mismo patrón visual que plan-generating */
+.EsfuerzoPercibido__saving {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-neutral-100);
+}
+
+.EsfuerzoPercibido__saving[hidden] {
+  display: none;
+}
+
+.EsfuerzoPercibido__saving-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer-5);
+  padding: var(--spacer-5);
+  text-align: center;
+}
+
+.EsfuerzoPercibido__saving-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-neutral-300);
+  border-top-color: var(--color-brand-600);
+  border-radius: 50%;
+  animation: esfuerzo-saving-spin 0.9s linear infinite;
+}
+
+.EsfuerzoPercibido__saving-text {
+  margin: 0;
+  max-width: 280px;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+@keyframes esfuerzo-saving-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

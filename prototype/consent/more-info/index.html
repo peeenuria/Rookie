@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rookie — Bottom sheet Más información</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" />
+    <link rel="stylesheet" href="../../css/tokens.css" />
+    <link rel="stylesheet" href="../../css/layout.css" />
+    <link rel="stylesheet" href="../../css/components.css" />
+    <link rel="stylesheet" href="../../css/consent.css" />
+  </head>
+  <body>
+    <div class="app-viewport">
+      <div class="phone-shell phone-shell--consent" id="phone-shell">
+        <div class="phone-shell__body">
+          <section
+            class="screen screen--consent is-active"
+            id="screen-consent-default"
+            aria-label="Consentimiento de datos"
+          >
+            <div class="consent-screen">
+              <div class="consent-screen__body">
+                <div class="consent-screen__top">
+                  <header class="screen-intro consent-screen__header">
+                    <h1 class="screen-intro__title">Tu privacidad nos importa</h1>
+                    <p class="screen-intro__subtitle">
+                      Vista previa del bottom sheet «Más información» (Historia 1.2).
+                    </p>
+                  </header>
+                </div>
+                <div class="consent-screen__actions">
+                  <button type="button" class="btn consent-screen__info" id="consent-more-info-preview">
+                    Más información
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../js/figma-1-2-spec.js"></script>
+    <script src="../../js/consent-app.js"></script>
+    <script>
+      document.getElementById('consent-more-info-preview')?.addEventListener('click', () => {
+        window.ConsentScreen?.openMoreInfoSheet();
+      });
+      window.ConsentScreen?.openMoreInfoSheet();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+﻿/* PantallaDePermisos — Figma 13413:5883 */
+
+.phone-shell--permisos {
+  position: relative;
+  background: var(--background-page);
+}
+
+.phone-shell--permisos .phone-shell__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.screen--permisos.is-active {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  background: var(--background-page);
+}
+
+.PantallaDePermisos {
+  position: relative;
+}
+
+.PantallaDePermisos .BarraSuperiorBack {
+  z-index: 25;
+}
+
+/* Slot siempre en el flujo visual superior */
+#permisos-back-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 67px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+#permisos-back-slot .BarraSuperiorBack,
+#permisos-back-slot .BarraSuperiorBack__btn {
+  pointer-events: auto;
+}
+
+.PantallaDePermisos__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.PantallaDePermisos__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 353px;
+  margin: 0 auto;
+  padding: 56px 0 24px;
+}
+
+.PantallaDePermisos__intro {
+  padding: 12px 0;
+}
+
+.PantallaDePermisos__location-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 96px;
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--background-default);
+}
+
+.PantallaDePermisos__location-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  max-width: 262px;
+}
+
+.PantallaDePermisos__location-title {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-neutral-1000);
+}
+
+.PantallaDePermisos__location-description {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: 18px;
+  color: var(--color-neutral-500);
+}
+
+.PantallaDePermisos__location-icon {
+  flex-shrink: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.PantallaDePermisos__separator {
+  padding: 10px 0;
+}
+
+.PantallaDePermisos__separator img {
+  display: block;
+  width: 100%;
+  height: 1px;
+}
+
+.PantallaDePermisos__optional {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.PantallaDePermisos__optional-label {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-lg-size);
+  font-weight: 700;
+  line-height: 22px;
+  color: var(--color-neutral-500);
+}
+
+.PantallaDePermisos__trackers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.PantallaDePermisos__tracker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 20px;
+}
+
+.PantallaDePermisos__tracker-label {
+  font-family: var(--font-family-default);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-weight);
+  line-height: 18px;
+  color: var(--color-neutral-500);
+}
+
+.PantallaDePermisos__actions {
+  width: 100%;
+}
+
+.PantallaDePermisos__continue.btn {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 8px;
+}
+
+/* Diálogo iOS falso — misma simulación visual que el scanner (no es componente Cami) */
+.IosPermissionDialog {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacer-5);
+}
+
+.IosPermissionDialog[hidden] {
+  display: none;
+}
+
+.IosPermissionDialog__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+
+.IosPermissionDialog__card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 270px;
+  padding: 20px 16px 0;
+  border-radius: 14px;
+  background: rgba(242, 242, 247, 0.96);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+  text-align: center;
+  overflow: hidden;
+}
+
+.IosPermissionDialog__title {
+  margin: 0 0 6px;
+  padding: 0 4px;
+  font-family: var(--font-family-default);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+  color: #000;
+}
+
+.IosPermissionDialog__message {
+  margin: 0 0 18px;
+  padding: 0 4px;
+  font-family: var(--font-family-default);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #000;
+}
+
+.IosPermissionDialog__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 0.5px solid rgba(60, 60, 67, 0.29);
+}
+
+.IosPermissionDialog__btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  min-height: 44px;
+  padding: 11px 8px;
+  font-family: var(--font-family-default);
+  font-size: 17px;
+  line-height: 22px;
+  color: #007aff;
+  cursor: pointer;
+}
+
+.IosPermissionDialog__btn--deny {
+  font-weight: 400;
+  border-right: 0.5px solid rgba(60, 60, 67, 0.29);
+}
+
+.IosPermissionDialog__btn--allow {
+  font-weight: 600;
+}
+
+.IosPermissionDialog__btn:active {
+  background: rgba(0, 0, 0, 0.06);
+}

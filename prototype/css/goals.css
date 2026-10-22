@@ -1,0 +1,579 @@
+/**
+ * Flujo 4.3 — fijar objetivos / videollamada mentor
+ * Figma frame 12639:26768
+ */
+
+/* ── Home inicial / actualizado (4.3.1.1 / 4.3.1.5) ── */
+.screen--home-goals .home-goals-header {
+  padding: var(--screen-title-offset-top) var(--content-margin-x) 0;
+  text-align: center;
+}
+
+.screen--home-goals .home-goals-header__title {
+  margin: 0 auto;
+  max-width: var(--screen-title-width);
+  font-size: var(--heading-lg-size);
+  font-weight: var(--heading-lg-weight);
+  line-height: var(--heading-lg-line);
+  color: var(--content-default);
+}
+
+.screen--home-goals .home-goals-header__title .accent {
+  color: var(--color-brand-600);
+}
+
+.screen--home-goals .home-goals-body {
+  padding: 19px var(--content-margin-x) var(--spacer-5);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--goals-home-content-gap, 24px);
+}
+
+.screen--home-goals .home-goals-slot {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+.screen--home-goals .home-goals-placeholder {
+  align-self: center;
+  width: 100%;
+  max-width: var(--content-width);
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-300) 0%,
+    var(--color-neutral-200) 50%,
+    var(--color-neutral-300) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.screen--home-goals .home-goals-placeholder--sm {
+  height: var(--goals-placeholder-sm-height, 144px);
+}
+
+.screen--home-goals .home-goals-placeholder--lg {
+  height: var(--goals-placeholder-lg-height, 259px);
+}
+
+/* RecordatorioCita — Figma 12637:421 */
+.recordatorio-cita {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--content-width);
+  min-height: var(--goals-recordatorio-height, 203px);
+  padding: var(--spacer-4);
+  border-radius: 8px;
+  background: var(--background-default);
+  overflow: hidden;
+}
+
+/* El título ("Seguimiento con Maximiliano.") mide más que el hueco a la
+   izquierda de la foto (max-width 179px vs. ~155px libres), así que va por
+   encima de ella: con la foto delante, el final de la palabra quedaba
+   cortado. El botón "Unirme" no se ve afectado. */
+.recordatorio-cita__content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacer-2);
+  width: 229px;
+  min-height: 171px;
+}
+
+.recordatorio-cita__title {
+  margin: 0;
+  max-width: 179px;
+  font-size: var(--heading-md-size);
+  font-weight: var(--heading-md-weight);
+  line-height: var(--heading-md-line);
+  color: var(--content-default);
+}
+
+.recordatorio-cita__title-prefix {
+  color: var(--content-default);
+}
+
+.recordatorio-cita__title-accent {
+  color: var(--color-brand-600);
+}
+
+.recordatorio-cita__meta {
+  margin: 0;
+  max-width: 155px;
+  min-height: 16px;
+  font-size: var(--body-xs-size);
+  font-weight: var(--body-xs-weight);
+  line-height: var(--body-xs-line);
+  color: var(--color-neutral-500);
+}
+
+.recordatorio-cita__join {
+  padding-top: var(--spacer-1);
+  width: 191px;
+}
+
+.recordatorio-cita__join-btn {
+  width: 127px;
+  min-height: 41px;
+  padding: var(--spacer-3) var(--spacer-4);
+}
+
+.recordatorio-cita__join .btn {
+  width: 127px;
+  min-width: 127px;
+}
+
+/* Figma 12637:429 — asset ya compuesto (photo-block-citayseguimiento-*),
+   sin capa de fondo/máscara CSS aparte. Por encima del texto donde se
+   solapan (z-index), pero `pointer-events: none` deja el botón "Unirme"
+   del contenido siempre clicable debajo. */
+.recordatorio-cita__illustration-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: var(--goals-illustration-width, 190px);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.recordatorio-cita__illustration {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Toast acceso anticipado (4.3.0.2 — Fase 2) */
+.home-goals-toast {
+  position: fixed;
+  left: var(--content-margin-x);
+  right: var(--content-margin-x);
+  bottom: var(--spacer-4);
+  z-index: 20;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacer-3);
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--spacer-3) var(--spacer-4);
+  background: var(--background-default);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.home-goals-toast[hidden] {
+  display: none;
+}
+
+.home-goals-toast__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.home-goals-toast__message {
+  flex: 1;
+  margin: 0;
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--content-default);
+}
+
+.home-goals-toast__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ── Puente Meets (4.3.1.2) ── */
+.screen--meet-bridge {
+  position: relative;
+  min-height: var(--frame-min-height);
+}
+
+.screen--meet-bridge .meet-bridge-header {
+  padding: var(--screen-title-offset-top) var(--content-margin-x) 0;
+  text-align: left;
+}
+
+.screen--meet-bridge .meet-bridge-header__title {
+  margin: 0;
+  max-width: var(--screen-title-width);
+  font-size: var(--heading-lg-size);
+  font-weight: var(--heading-lg-weight);
+  line-height: var(--heading-lg-line);
+  color: var(--content-default);
+  white-space: pre-line;
+}
+
+.screen--meet-bridge .meet-bridge-body {
+  padding: 19px var(--content-margin-x) var(--spacer-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer-5);
+}
+
+.screen--meet-bridge .meet-bridge-mentor-slot {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+.screen--meet-bridge .meet-bridge-reminder-slot,
+.screen--meet-bridge .meet-bridge-actions {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+/* Puente de carga (Figma 12637:591) — sin UI de videollamada real */
+/* Mensaje carga (Figma 12988:881) — mismo fondo atenuado que el resto de la
+   pantalla puente, con la tarjeta de carga centrada encima. */
+.meet-bridge-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--content-margin-x);
+  background: rgba(245, 245, 245, 0.92);
+}
+
+.meet-bridge-loading[hidden] {
+  display: none;
+}
+
+.meet-bridge-loading__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer-5);
+  width: 100%;
+  max-width: var(--content-width);
+  padding: var(--spacer-5);
+  border-radius: 8px;
+  background: var(--background-default);
+  text-align: center;
+}
+
+/* Mismo spinner que plan-generating (Historia 3.1) — reutilizado tal cual. */
+.meet-bridge-loading__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-neutral-300);
+  border-top-color: var(--color-brand-600);
+  border-radius: 50%;
+  animation: meet-bridge-spin 0.9s linear infinite;
+}
+
+.meet-bridge-loading__text {
+  margin: 0;
+  max-width: 260px;
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+@keyframes meet-bridge-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Meets externo stub (4.3.1.3) — solo dev; happy path no navega aquí ── */
+.screen--meet-external {
+  position: relative;
+  min-height: var(--frame-min-height);
+}
+
+.screen--meet-external .meet-external-body {
+  padding: var(--screen-title-offset-top) var(--content-margin-x) var(--spacer-5);
+  min-height: var(--frame-min-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-5);
+  text-align: center;
+}
+
+.screen--meet-external .meet-external-body__title {
+  margin: 0;
+  font-size: var(--heading-md-size);
+  font-weight: var(--heading-md-weight);
+  line-height: var(--heading-md-line);
+  color: var(--content-default);
+}
+
+.screen--meet-external .meet-external-body__hint {
+  margin: 0;
+  max-width: var(--content-width);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--color-neutral-600);
+}
+
+.screen--meet-external .meet-external-actions {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+/* ── Resumen post-llamada (4.3.1.4) ── */
+.screen--call-summary .call-summary-header {
+  padding: var(--screen-title-offset-top) var(--content-margin-x) 0;
+  text-align: left;
+}
+
+.screen--call-summary .call-summary-header__title {
+  margin: 0;
+  max-width: var(--screen-title-width);
+  font-size: var(--heading-lg-size);
+  font-weight: var(--heading-lg-weight);
+  line-height: var(--heading-lg-line);
+  color: var(--content-default);
+}
+
+.screen--call-summary .call-summary-body {
+  padding: var(--spacer-5) var(--content-margin-x) var(--spacer-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacer-5);
+}
+
+.screen--call-summary .call-summary-body__subtitle {
+  margin: 0;
+  width: 100%;
+  max-width: var(--content-width);
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--color-neutral-500);
+  text-align: left;
+}
+
+.screen--call-summary .call-summary-goals-slot,
+.screen--call-summary .call-summary-followup-slot,
+.screen--call-summary .call-summary-actions {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+/* CardObjetivos — Figma 12638:26116 */
+.goals-card {
+  width: 100%;
+  min-height: var(--goals-card-height, 206px);
+  padding: var(--spacer-4);
+  border-radius: 8px;
+  background: var(--background-default);
+}
+
+.goals-card__title {
+  margin: 0 0 var(--spacer-5);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+.goals-card__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-5);
+}
+
+.goals-card__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-3);
+}
+
+.goals-card__badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--goals-badge-size, 24px);
+  height: var(--goals-badge-size, 24px);
+  border-radius: var(--goals-badge-radius, 12px);
+  background: var(--color-brand-600);
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-strong-line);
+  color: var(--content-on-brand);
+}
+
+.goals-card__text {
+  margin: 0;
+  flex: 1;
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+/* ── Fase 2 — botón Unirme accesible antes de hora (clic → toast) ── */
+.recordatorio-cita__join-btn--early {
+  background: var(--background-disabled);
+  color: var(--content-on-brand);
+  cursor: pointer;
+}
+
+/* ── Fase 3 — resumen pendiente ── */
+.call-summary-pending-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-2);
+  width: 100%;
+  padding: 17px 15px;
+  background: var(--color-brand-100);
+}
+
+.call-summary-pending-banner__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--content-default);
+}
+
+.call-summary-pending-banner__message {
+  margin: 0;
+  flex: 1;
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-medium-weight, 500);
+  line-height: var(--body-sm-line);
+  color: var(--content-default);
+}
+
+.goals-card--pending .goals-card__skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-4);
+  width: 100%;
+}
+
+.goals-card__skeleton-line {
+  width: 100%;
+  height: 24px;
+  background: linear-gradient(
+    90deg,
+    var(--color-neutral-300) 0%,
+    var(--color-neutral-200) 50%,
+    var(--color-neutral-300) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.screen--call-summary .call-summary-pending-slot {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+/* ── Fase 4 — link + bottom sheet mentor no aparece ── */
+.btn--link {
+  width: 100%;
+  min-height: auto;
+  padding: var(--spacer-2) var(--button-padding-x);
+  background: transparent;
+  color: var(--color-brand-600);
+  font-size: var(--body-sm-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: var(--body-sm-line);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.btn--link:active {
+  opacity: 0.85;
+}
+
+.goals-bottom-sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.goals-bottom-sheet[hidden] {
+  display: none;
+}
+
+.goals-bottom-sheet:not([hidden]) {
+  pointer-events: auto;
+}
+
+.goals-bottom-sheet__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.goals-bottom-sheet__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: var(--spacer-5) var(--content-margin-x) var(--spacer-5);
+  background: var(--background-default);
+  border-radius: var(--spacer-4) var(--spacer-4) 0 0;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.goals-bottom-sheet__handle {
+  display: block;
+  width: 95px;
+  height: 4px;
+  margin: 0 auto var(--spacer-4);
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background: var(--color-neutral-300);
+  cursor: pointer;
+}
+
+.goals-bottom-sheet__close {
+  display: none;
+}
+
+.goals-bottom-sheet__title {
+  margin: 0 0 var(--spacer-3);
+  padding-right: 0;
+  font-size: var(--heading-sm-size);
+  font-weight: var(--heading-sm-weight);
+  line-height: var(--heading-sm-line);
+  color: var(--content-default);
+}
+
+.goals-bottom-sheet__body {
+  margin: 0 0 var(--spacer-5);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+.goals-bottom-sheet__actions {
+  width: 100%;
+}

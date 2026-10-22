@@ -1,0 +1,534 @@
+/**
+ * Flujo 4.2 — agenda primera cita
+ * Pantalla 4.2.1.4 — Figma 12964:1119
+ */
+
+/* ── Agenda 4.2.1.4 ── */
+.screen--appointment {
+  background: var(--background-page);
+}
+
+.screen--appointment.is-active {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.appointment-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Reserva espacio para BarraSuperiorBack (absolute, top:30px) — mismo
+   patrón que profiling-personal / profiling-motivations. */
+.appointment-stepper-wrap {
+  flex-shrink: 0;
+  padding: var(--screen-title-offset-top) var(--content-margin-x) 0;
+}
+
+.appointment-stepper-wrap .profiling-stepper {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.screen--appointment .appointment-body {
+  padding: var(--spacer-4) var(--appointment-body-offset-x) var(--spacer-5);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--appointment-body-gap);
+}
+
+/* Recordatorio mentor (Figma 12962:31247) */
+.recordatorio-mentor {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: var(--appointment-recordatorio-height);
+  padding-left: 15px;
+  background: var(--background-default);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.recordatorio-mentor__text {
+  flex: 1;
+  min-width: 0;
+  padding: var(--spacer-3) 0;
+}
+
+.recordatorio-mentor__name {
+  margin: 0;
+  font-size: var(--body-sm-strong-size);
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--content-brand);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recordatorio-mentor__specialty {
+  margin: 0;
+  font-size: var(--body-xs-size);
+  line-height: var(--body-xs-line);
+  color: var(--content-default);
+}
+
+.recordatorio-mentor__photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--appointment-recordatorio-photo-width);
+  height: var(--appointment-recordatorio-height);
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.recordatorio-mentor__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Intro — mismo patrón screen-intro que catálogo / motivaciones */
+.appointment-intro {
+  /* Tipografía: .screen-intro (components.css) */
+  text-align: left;
+  align-items: flex-start;
+}
+
+.appointment-intro__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.appointment-intro__detail {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--color-neutral-500);
+  text-align: left;
+}
+
+.screen--appointment .appointment-picker {
+  width: 100%;
+}
+
+/* ── Week picker (PillsDias + GridHorarios) ── */
+.week-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--appointment-selector-gap);
+  width: 100%;
+}
+
+.week-picker__question {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-md-size);
+  line-height: 20px;
+  text-align: center;
+  color: var(--content-default);
+}
+
+.week-picker__calendar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--appointment-calendar-gap);
+  width: 100%;
+}
+
+.week-picker__month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: var(--appointment-month-banner-height);
+  min-height: var(--appointment-month-banner-height);
+  padding: 6px 16px;
+  background: var(--background-default);
+  border-radius: 8px;
+}
+
+.week-picker__month-label {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: 18px;
+  text-align: center;
+  color: var(--color-neutral-500);
+}
+
+.week-picker__chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--appointment-chevron-size);
+  height: var(--appointment-chevron-size);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-neutral-500);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.week-picker__chevron:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.week-picker__chevron img,
+.week-picker__chevron svg {
+  display: block;
+  width: var(--appointment-chevron-size);
+  height: var(--appointment-chevron-size);
+}
+
+.week-picker__days {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* PillsDias — Figma 12962:31292 */
+.pills-dias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex: 1;
+  max-width: var(--appointment-day-cell-width);
+  height: var(--appointment-day-cell-height);
+  padding: var(--spacer-3) var(--spacer-4);
+  border: 1px solid var(--color-neutral-500);
+  border-radius: 8px;
+  background: var(--background-default);
+  color: var(--color-neutral-500);
+  font-family: var(--font-family-default);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pills-dias__num {
+  font-size: var(--body-lg-size);
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.pills-dias__weekday {
+  font-size: var(--body-sm-strong-size);
+  font-weight: var(--body-sm-strong-weight);
+  line-height: 18px;
+}
+
+.pills-dias.is-selected {
+  background: var(--color-brand-600);
+  border-color: var(--color-brand-600);
+  color: var(--content-on-brand);
+}
+
+.pills-dias.is-disabled,
+.pills-dias:disabled {
+  background: var(--background-default);
+  border-color: var(--color-neutral-300);
+  color: var(--color-neutral-300);
+  cursor: not-allowed;
+}
+
+.week-picker__sin-huecos {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-xs-size);
+  line-height: var(--body-xs-line);
+  text-align: center;
+  color: var(--content-default);
+}
+
+.week-picker__sin-huecos p {
+  margin: 0;
+}
+
+.week-picker__sin-huecos p + p {
+  margin-top: 0;
+}
+
+.week-picker__empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: var(--appointment-selector-gap);
+  width: 100%;
+}
+
+.week-picker__slots-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--appointment-selector-gap);
+  width: 100%;
+}
+
+.week-picker__slots-section[hidden] {
+  display: none;
+}
+
+.week-picker__divider {
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--border-default);
+}
+
+.week-picker__slots-label {
+  margin: 0;
+  width: 100%;
+  font-size: var(--body-xs-size);
+  line-height: var(--body-xs-line);
+  color: var(--content-default);
+}
+
+.week-picker__slots {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--appointment-slot-gap-y) var(--appointment-slot-gap-x);
+  width: 100%;
+}
+
+/* PillHoras — Figma 12964:673 */
+.pill-horas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: var(--spacer-3) var(--spacer-4);
+  border: 1px solid var(--color-neutral-500);
+  border-radius: 8px;
+  background: var(--background-default);
+  color: var(--color-neutral-500);
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-medium-size);
+  font-weight: 600;
+  line-height: 22px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pill-horas.is-selected {
+  background: var(--color-brand-600);
+  border-color: var(--color-brand-600);
+  color: var(--content-on-brand);
+}
+
+.pill-horas.is-occupied,
+.pill-horas:disabled:not(.is-selected) {
+  background: var(--background-default);
+  border-color: var(--color-neutral-300);
+  color: var(--color-neutral-300);
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+/* Toast slot ocupado (Figma 12641:2221) */
+.appointment-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacer-3);
+  width: 100%;
+  max-width: 355px;
+  padding: var(--spacer-4);
+  background: var(--background-default);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 5;
+}
+
+.appointment-toast[hidden] {
+  display: none;
+}
+
+.appointment-toast__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.appointment-toast__message {
+  flex: 1;
+  margin: 0;
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--content-default);
+  text-align: left;
+}
+
+.appointment-toast__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.screen--appointment .appointment-shell-note {
+  margin: 0;
+  padding: var(--spacer-4);
+  width: 100%;
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  text-align: center;
+  color: var(--color-neutral-500);
+  background: var(--background-default);
+  border: 1px dashed var(--border-default);
+}
+
+.screen--appointment .appointment-actions {
+  display: none;
+}
+
+/* ── Confirmación 4.2.5 (Figma 12641:917) ── */
+.screen--appointment-confirmed {
+  background: var(--color-brand-300);
+  min-height: var(--frame-min-height);
+}
+
+.screen--appointment-confirmed .appointment-confirmed-body {
+  padding: 110px var(--appointment-body-offset-x) var(--spacer-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.screen--appointment-confirmed .appointment-confirmed__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 361px;
+}
+
+.screen--appointment-confirmed .appointment-confirmed__hero {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.screen--appointment-confirmed .appointment-confirmed__title {
+  margin: 0;
+  width: 100%;
+  font-size: var(--heading-lg-size);
+  font-weight: var(--heading-lg-weight);
+  line-height: var(--heading-lg-line);
+  color: var(--content-on-brand);
+}
+
+.screen--appointment-confirmed .appointment-confirmed__subtitle {
+  width: 100%;
+}
+
+.screen--appointment-confirmed .appointment-confirmed__subtitle p {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+.screen--appointment-confirmed .appointment-confirmed__card-slot {
+  width: 100%;
+  max-width: 361px;
+}
+
+.screen--appointment-confirmed .reminder-card {
+  min-height: 206px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.screen--appointment-confirmed .reminder-card__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.phone-shell .AppToastHost {
+  bottom: calc(113px + var(--spacer-3));
+}
+
+.reminder-card {
+  width: 100%;
+  padding: var(--appointment-reminder-card-padding, 16px);
+  background: var(--background-default);
+  text-align: left;
+}
+
+.reminder-card__row {
+  display: flex;
+  align-items: center;
+  gap: var(--appointment-reminder-icon-gap, 20px);
+}
+
+.reminder-card__row + .reminder-card__row {
+  margin-top: var(--appointment-reminder-row-gap, 24px);
+}
+
+.reminder-card__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.reminder-card__text {
+  margin: 0;
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--content-default);
+}
+
+.screen--appointment .appointment-actions[hidden] {
+  display: none;
+}
+
+/* Sin conexión — mismo patrón que 4.1.1, en contexto agenda */
+.screen--appointment .offline-panel {
+  width: 100%;
+}
+
+.screen--appointment-confirmed .appointment-confirmed-actions {
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+/* ── Stub Home (post «Ir a tu plan») ── */
+.screen--home-stub .home-stub-body {
+  padding: var(--screen-title-offset-top) var(--content-margin-x);
+  text-align: center;
+}
+
+.screen--home-stub .home-stub-body p {
+  margin: 0 0 var(--spacer-5);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--color-neutral-600);
+}

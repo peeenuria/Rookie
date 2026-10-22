@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Running Mentors — Flujos 4.1 / 4.2 / 4.3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" />
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/profiling.css" />
+    <link rel="stylesheet" href="../css/mentor-catalog.css" />
+    <link rel="stylesheet" href="../css/appointment.css" />
+    <link rel="stylesheet" href="../css/goals.css" />
+    <link rel="stylesheet" href="../css/celebration.css" />
+    <link rel="stylesheet" href="../css/toast.css" />
+  </head>
+  <body>
+    <div class="app-viewport">
+      <div class="phone-shell phone-shell--mentor-flow" id="phone-shell">
+        <div id="app-toast-root" class="AppToastHost" aria-live="polite"></div>
+        <div class="phone-shell__body">
+          <div class="phone-shell__scroll">
+            <!-- 4.1.2 — Catálogo de mentores (Figma 12528:42310) -->
+            <section class="screen screen--catalog is-active" id="screen-catalog">
+              <div id="catalog-back-slot"></div>
+              <div class="mentor-catalog">
+                <div class="mentor-catalog__stepper-wrap" id="catalog-stepper-wrap"></div>
+                <header class="screen-intro mentor-catalog__header">
+                  <h1 class="screen-intro__title" id="catalog-title">Tu mentor te está esperando</h1>
+                  <p class="screen-intro__subtitle" id="catalog-subtitle">
+                    Sin presión.<br />Puedes cambiarlo más adelante.
+                  </p>
+                </header>
+                <div class="mentor-catalog__list-wrap" id="catalog-list-wrap">
+                  <div class="mentor-list" id="mentor-list" role="list"></div>
+                </div>
+
+                <div class="offline-panel" id="offline-panel" hidden aria-live="polite">
+                  <img
+                    class="offline-panel__icon"
+                    id="offline-icon"
+                    src=""
+                    alt=""
+                    width="24"
+                    height="24"
+                  />
+                  <div class="offline-panel__text">
+                    <h2 class="offline-panel__title" id="offline-title"></h2>
+                    <p class="offline-panel__message" id="offline-message"></p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4.1.3 — Ficha del mentor (Figma 12529:42925) -->
+            <section class="screen screen--confirmacion-mentor" id="pantalla-confirmacion-mentor">
+              <div class="confirmacion-mentor__hero-wrap">
+                <div id="confirmation-back-slot"></div>
+                <div class="confirmacion-mentor__hero">
+                  <img
+                    class="confirmacion-mentor__hero-photo"
+                    id="confirmation-hero"
+                    alt=""
+                    width="393"
+                    height="326"
+                  />
+                </div>
+              </div>
+
+              <div class="confirmacion-mentor__body">
+                <p class="confirmacion-mentor__context" id="confirmation-context"></p>
+                <div class="confirmacion-mentor__identity">
+                  <h1 class="confirmacion-mentor__name" id="confirmation-name"></h1>
+                  <p class="confirmacion-mentor__specialty" id="confirmation-specialty"></p>
+                </div>
+                <p class="confirmacion-mentor__bio" id="confirmation-bio"></p>
+                <div class="pill-list confirmacion-mentor__pills" id="confirmation-pills"></div>
+                <p class="confirmacion-mentor__availability" id="confirmation-availability"></p>
+                <div class="confirmacion-mentor__actions">
+                  <button type="button" class="btn btn--primary" id="confirmation-primary-btn"></button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Placeholder — agenda primera cita (Historia 4.2, pendiente) -->
+            <section class="screen screen--mentor-continue-stub" id="screen-mentor-continue-stub">
+              <div class="mentor-stub">
+                <p class="mentor-stub__message" id="mentor-stub-message"></p>
+                <button type="button" class="btn btn--secondary" id="mentor-stub-back">Volver al listado</button>
+              </div>
+            </section>
+
+            <!-- 4.2.1.4 — Selecciona día y hora (Figma 12964:1119) -->
+            <section class="screen screen--appointment" id="screen-appointment">
+              <div class="appointment-screen">
+                <div id="appointment-back-slot"></div>
+                <div class="appointment-stepper-wrap" id="appointment-stepper-wrap"></div>
+                <div class="phone-shell__content appointment-body">
+                  <div class="appointment-mentor-card" id="appointment-mentor-card" aria-hidden="true"></div>
+
+                  <header class="screen-intro appointment-intro">
+                    <h1 class="screen-intro__title" id="appointment-title"></h1>
+                    <div class="appointment-intro__meta">
+                      <p class="screen-intro__subtitle" id="appointment-subtitle"></p>
+                      <p class="appointment-intro__detail" id="appointment-meta"></p>
+                    </div>
+                  </header>
+
+                  <div class="appointment-picker" id="appointment-picker" aria-label="Selector de cita"></div>
+
+                  <div
+                    class="appointment-toast"
+                    id="appointment-toast"
+                    hidden
+                    role="alert"
+                    aria-live="assertive"
+                  >
+                    <img
+                      class="appointment-toast__icon"
+                      id="appointment-toast-icon"
+                      src="../assets/figma/e356d82336ba4970a9fc761b91c2622f3236230c.svg"
+                      alt=""
+                      width="24"
+                      height="24"
+                    />
+                    <p class="appointment-toast__message" id="appointment-toast-message"></p>
+                    <button
+                      type="button"
+                      class="appointment-toast__close"
+                      id="appointment-toast-close"
+                      aria-label="Cerrar aviso"
+                    >
+                      <img
+                        src="../assets/figma/25a00030cac82c12541e9ef916ccb6207f460d4a.svg"
+                        alt=""
+                        width="16"
+                        height="16"
+                      />
+                    </button>
+                  </div>
+
+                  <div
+                    class="offline-panel"
+                    id="appointment-offline-panel"
+                    hidden
+                    aria-live="polite"
+                  >
+                    <img
+                      class="offline-panel__icon"
+                      id="appointment-offline-icon"
+                      src=""
+                      alt=""
+                      width="24"
+                      height="24"
+                    />
+                    <div class="offline-panel__text">
+                      <h2 class="offline-panel__title" id="appointment-offline-title"></h2>
+                      <p class="offline-panel__message" id="appointment-offline-message"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4.2.5 — Cita confirmada (Figma 12641:917) -->
+            <section class="screen screen--appointment-confirmed" id="screen-appointment-confirmed">
+              <div class="appointment-confirmed-body">
+                <div class="appointment-confirmed__hero">
+                  <div
+                    class="appointment-confirmed__confetti"
+                    id="appointment-confirmed-confetti"
+                    aria-hidden="true"
+                  ></div>
+                  <div
+                    class="appointment-confirmed__check"
+                    id="appointment-confirmed-check"
+                  ></div>
+                </div>
+                <div class="appointment-confirmed__copy">
+                  <h1 class="appointment-confirmed__title" id="appointment-confirmed-title"></h1>
+                  <div class="appointment-confirmed__subtitle" id="appointment-confirmed-subtitle"></div>
+                </div>
+                <div class="appointment-confirmed__card-slot" id="appointment-reminder-slot"></div>
+                <div class="appointment-confirmed-actions btn-stack">
+                  <button type="button" class="btn btn--primary" id="appointment-go-plan-btn"></button>
+                  <button type="button" class="btn btn--secondary" id="appointment-calendar-btn"></button>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4.3.1.1 — Cita del día / Home (Figma 12635:1874) -->
+            <section class="screen screen--home-goals" id="screen-home-initial">
+              <header class="home-goals-header">
+                <h1 class="home-goals-header__title" id="home-initial-title"></h1>
+              </header>
+              <div class="home-goals-body">
+                <div class="home-goals-slot" id="home-initial-recordatorio-slot"></div>
+                <div class="home-goals-slot" id="home-initial-goals-slot"></div>
+                <div class="home-goals-placeholder home-goals-placeholder--sm" aria-hidden="true"></div>
+                <div class="home-goals-placeholder home-goals-placeholder--lg" aria-hidden="true"></div>
+              </div>
+              <div class="home-goals-toast" id="home-goals-toast" hidden role="alert" aria-live="assertive">
+                <img
+                  class="home-goals-toast__icon"
+                  id="home-goals-toast-icon"
+                  src="../assets/figma/e356d82336ba4970a9fc761b91c2622f3236230c.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <p class="home-goals-toast__message" id="home-goals-toast-message"></p>
+                <button
+                  type="button"
+                  class="home-goals-toast__close"
+                  id="home-goals-toast-close"
+                  aria-label="Cerrar aviso"
+                >
+                  <img
+                    src="../assets/figma/25a00030cac82c12541e9ef916ccb6207f460d4a.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                  />
+                </button>
+              </div>
+            </section>
+
+            <!-- 4.3.1.2 — PantallaPuenteAppMeets (Figma 12635:1742) -->
+            <section class="screen screen--meet-bridge" id="screen-meet-bridge">
+              <div id="meet-bridge-back-slot"></div>
+              <header class="meet-bridge-header">
+                <h1 class="meet-bridge-header__title" id="meet-bridge-title"></h1>
+              </header>
+              <div class="meet-bridge-body">
+                <div class="meet-bridge-mentor-slot" id="meet-bridge-mentor-slot"></div>
+                <div class="meet-bridge-reminder-slot" id="meet-bridge-reminder-slot"></div>
+                <div class="meet-bridge-actions btn-stack">
+                  <button type="button" class="btn btn--primary" id="meet-bridge-join-btn"></button>
+                  <button type="button" class="btn btn--link meet-bridge-noshow-btn" id="meet-bridge-noshow-btn"></button>
+                </div>
+              </div>
+              <div
+                class="meet-bridge-loading"
+                id="meet-bridge-loading"
+                hidden
+                role="status"
+                aria-live="polite"
+                aria-busy="true"
+              >
+                <div class="meet-bridge-loading__inner">
+                  <span class="meet-bridge-loading__spinner" aria-hidden="true"></span>
+                  <p class="meet-bridge-loading__text" id="meet-bridge-loading-text"></p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4.3.1.3 — Llamada de Meets (Figma 12637:82) — stub prototipo -->
+            <section class="screen screen--meet-external" id="screen-meet-external">
+              <div class="meet-external-body">
+                <h1 class="meet-external-body__title" id="meet-external-title"></h1>
+                <p class="meet-external-body__hint" id="meet-external-hint"></p>
+                <div class="meet-external-actions btn-stack">
+                  <button type="button" class="btn btn--primary" id="meet-external-finish-btn"></button>
+                  <button type="button" class="btn btn--link meet-bridge-noshow-btn" id="meet-external-noshow-btn"></button>
+                </div>
+              </div>
+              <!-- Carga breve tras "Simular fin de llamada", antes del resumen (reutiliza spinner de 3.1) -->
+              <div
+                class="meet-bridge-loading"
+                id="meet-external-loading"
+                hidden
+                role="status"
+                aria-live="polite"
+                aria-busy="true"
+              >
+                <div class="meet-bridge-loading__inner">
+                  <span class="meet-bridge-loading__spinner" aria-hidden="true"></span>
+                  <p class="meet-bridge-loading__text" id="meet-external-loading-text"></p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4.3.1.4 — Resumen post-llamada (Figma 12638:26237) -->
+            <section class="screen screen--call-summary" id="screen-call-summary">
+              <div id="call-summary-back-slot"></div>
+              <header class="call-summary-header">
+                <h1 class="call-summary-header__title" id="call-summary-title"></h1>
+              </header>
+              <div class="call-summary-body">
+                <p class="call-summary-body__subtitle" id="call-summary-subtitle"></p>
+                <div class="call-summary-pending-slot" id="call-summary-pending-slot" hidden></div>
+                <div class="call-summary-goals-slot" id="call-summary-goals-slot"></div>
+                <div class="call-summary-followup-slot" id="call-summary-followup-slot"></div>
+                <div class="call-summary-actions btn-stack">
+                  <button type="button" class="btn btn--primary" id="call-summary-plan-btn"></button>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4.3.1.5 — Home actualizado (Figma 12637:26028) -->
+            <section class="screen screen--home-goals" id="screen-home-updated">
+              <header class="home-goals-header">
+                <h1 class="home-goals-header__title" id="home-updated-title"></h1>
+              </header>
+              <div class="home-goals-body">
+                <div class="home-goals-slot" id="home-updated-goals-slot"></div>
+                <div class="home-goals-slot" id="home-updated-recordatorio-slot"></div>
+                <div class="home-goals-placeholder home-goals-placeholder--sm" aria-hidden="true"></div>
+                <div class="home-goals-placeholder home-goals-placeholder--lg" aria-hidden="true"></div>
+              </div>
+            </section>
+          </div>
+
+          <!-- 4.3.3 — Bottom sheet mentor no aparece (Figma 12639:26394) -->
+          <div class="goals-bottom-sheet" id="goals-bottom-sheet" hidden role="presentation">
+            <div class="goals-bottom-sheet__backdrop" id="goals-bottom-sheet-backdrop"></div>
+            <div
+              class="goals-bottom-sheet__panel"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="goals-bottom-sheet-title"
+            >
+                <button
+                  type="button"
+                  class="goals-bottom-sheet__handle"
+                  id="goals-bottom-sheet-close"
+                  aria-label="Cerrar"
+                ></button>
+              <h2 class="goals-bottom-sheet__title" id="goals-bottom-sheet-title"></h2>
+              <p class="goals-bottom-sheet__body" id="goals-bottom-sheet-body"></p>
+              <div class="goals-bottom-sheet__actions btn-stack">
+                <button type="button" class="btn btn--primary" id="goals-bottom-sheet-reschedule"></button>
+                <button type="button" class="btn btn--secondary" id="goals-bottom-sheet-change-mentor"></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/date-format.js"></script>
+    <script src="../js/barra-superior-back.js"></script>
+    <script src="../js/figma-4-1-spec.js"></script>
+    <script src="../js/figma-4-2-spec.js"></script>
+    <script src="../js/figma-4-3-spec.js"></script>
+    <script src="../js/figma-3-1-spec.js"></script>
+    <script src="../js/appointment-picker.js"></script>
+    <script src="../js/appointment-confirmed-celebration.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/profiling-stepper-anim.js"></script>
+    <script src="../js/mentor-carousel.js"></script>
+    <script src="../js/mentor-app.js"></script>
+  </body>
+</html>

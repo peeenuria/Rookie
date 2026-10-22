@@ -1,0 +1,210 @@
+/**
+ * Design tokens — frames Figma 4.1 (12641:2921) y 4.2 (12641:2222)
+ * Extraídos vía MCP get_variable_defs
+ */
+:root {
+  /* Primitive */
+  --color-brand-600: #3643ba;
+  --color-brand-400: #7a89d6;
+  --color-brand-300: #a0abe3;
+  --color-brand-200: #c5cced;
+  --color-brand-100: #e2e5f6;
+  --color-brand-1000: #0a0d2a;
+  --color-neutral-50: #ffffff;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #ebebeb;
+  --color-neutral-300: #d9d9d9;
+  --color-neutral-400: #b3b3b3;
+  --color-neutral-500: #757575;
+  --color-neutral-600: #444444;
+  --color-neutral-1000: #111111;
+
+  /* Semantic */
+  --background-default: #ffffff;
+  --background-brand: #3643ba;
+  --background-page: #f5f5f5;
+  --background-disabled: #d9d9d9;
+  --background-disabled-default: #d9d9d9;
+  --background-disabled-secondary: #f5f5f5;
+  --content-default: #111111;
+  --content-on-brand: #ffffff;
+  --content-brand: #3643ba;
+  --content-disabled: #b3b3b3;
+  --border-default: #d9d9d9;
+  --border-disabled: #e6e6e6;
+  --color-danger-default: #c8251f;
+  --color-danger-border: #e32c26;
+
+  /* Typography */
+  /* Design System — Host Grotesk (Fontshare) */
+  --font-family-default: 'Host Grotesk', system-ui, sans-serif;
+  --button-radius: 8px;
+
+  --heading-lg-size: 36px;
+  --heading-lg-line: 44px;
+  --heading-lg-weight: 600;
+
+  --heading-md-size: 30px;
+  --heading-md-line: 38px;
+  --heading-md-weight: 600;
+
+  --heading-sm-size: 24px;
+  --heading-sm-line: 32px;
+  --heading-sm-weight: 600;
+
+  --body-lg-size: 18px;
+  --body-lg-line: 28px;
+  --body-lg-weight: 400;
+
+  --body-md-size: 16px;
+  --body-md-line: 24px;
+  --body-md-weight: 400;
+
+  --body-md-medium-size: 16px;
+  --body-md-medium-line: 24px;
+  --body-md-medium-weight: 500;
+
+  --body-sm-size: 14px;
+  --body-sm-line: 20px;
+  --body-sm-weight: 400;
+
+  --body-sm-strong-size: 14px;
+  --body-sm-strong-line: 20px;
+  --body-sm-strong-weight: 600;
+
+  --body-xs-size: 12px;
+  --body-xs-line: 16px;
+  --body-xs-weight: 400;
+
+  --body-xs-medium-weight: 500;
+
+  --rating-size: 10px;
+
+  --pill-size: 7px;
+  --pill-line: 10px;
+
+  /* Spacing (base 4px) — valores medidos en Figma 4.1.2 (12528:42310) */
+  --spacer-0: 0;
+  --spacer-1: 4px;
+  --spacer-2: 8px;
+  --spacer-3: 12px;
+  --spacer-4: 16px;
+  --spacer-5: 24px;
+  --spacer-6: 56px;
+
+  /* Layout 4.1.2 */
+  --screen-title-width: 353px;
+  --screen-title-offset-top: 86px; /* Figma y=110 (sin status bar decorativa) */
+  --screen-gap-heading-subtitle: 18px; /* y=198→216 */
+  --screen-gap-subtitle-list: 18px; /* y=272→290 */
+
+  /* Layout */
+  --frame-width: 393px;
+  --frame-min-height: 865px;
+  --navbar-height: 113px; /* Figma 12954:9360 — reservado para uso futuro */
+  --content-margin-x: 16px;
+  --content-width: 361px;
+  --grid-gutter: 8px;
+
+  /* Components */
+  --button-min-height: 48px;
+  --button-padding-x: 16px;
+  --button-padding-y: 12px;
+  --button-stack-gap: 8px; /* Figma 4.1.1: primary→secondary ~6px, visible ~8px */
+  --button-press-duration: 120ms;
+  --button-press-scale: 0.97;
+  --pill-radius: 400px;
+  --pill-border-width: 0.5px;
+  --pill-padding-x: 6px;
+  --pill-padding-y: 2px;
+  --mentor-card-height: auto;
+  --mentor-photo-width: 160px;
+  --mentor-photo-height: 320px;
+  /* Figma 12913:30404 / photo-block — asset FotoMentor (NO reutilizar hero) */
+  --mentor-photo-mask: url('../assets/figma/mask-foto-mentor.png');
+  --mentor-photo-mask-size: 100% 320px;
+  --mentor-photo-mask-position: 0px -12px;
+  --mentor-photo-mask-content-height: 308px; /* Figma: bottom-aligned masked layer */
+  /* Variante compacta legacy — no usar en recordatorio (tiene tokens propios) */
+  --mentor-photo-mask-sm: url('../assets/figma/mask-foto-mentor.png');
+  --mentor-hero-size: 247px;
+  --mentor-hero-radius: 0; /* Figma 12529:43004 — Rectangle 3, esquinas rectas */
+  --mentor-hero-block-height: 326px;
+  --mentor-hero-block-aspect: 393 / 326;
+  /* Walkthrough 1.1.3+ — clip conservado (pantallas de activación) */
+  --walkthrough-hero-clip: polygon(0 0, 100% 0, 100% 78.65%, 0 100%);
+  --confirmacion-mentor-body-gap: 16px;
+  --confirmacion-mentor-pill-size: 10px;
+  --confirmacion-mentor-pill-height: 22px;
+  --confirmacion-mentor-pill-padding-x: 12px;
+  --confirmacion-mentor-pill-padding-y: 4px;
+  --mentor-list-gap: 20px;
+  /* Carrusel mentores (vertical) — escala/opacidad + spring snap */
+  --mentor-carousel-gap: 12px;
+  --mentor-carousel-side-peek: 28px;
+  --mentor-carousel-active-scale: 1;
+  --mentor-carousel-active-opacity: 1;
+  --mentor-carousel-side-scale: 0.92;
+  --mentor-carousel-side-opacity: 0.7;
+  --mentor-carousel-focus-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --mentor-carousel-focus-duration: 160ms;
+  --navbar-shadow: 0 -2px 9.3px rgba(0, 0, 0, 0.05); /* Figma 12954:9360 */
+  --navbar-padding-left: 7px;
+  --navbar-padding-right: 12.2px;
+  --navbar-top-offset: 2.16px;
+  --navbar-tabs-inner-padding-x: 4.32px;
+  --navbar-tabs-gap: 3.24px;
+  --navbar-tab-count: 5;
+  --navbar-tab-padding-y: 6.48px;
+  --navbar-icon-label-gap: 2.16px;
+  --navbar-icon-size: 21.6px;
+  --navbar-indicator-width: 73.44px;
+  --navbar-indicator-height: 2.16px;
+  --navbar-indicator-radius: 2.16px;
+  --navbar-stain-size: var(--navbar-height);
+  --navbar-stain-color: var(--color-neutral-300);
+  --navbar-stain-fade-in: 140ms;
+  --navbar-stain-fade-out: 220ms;
+  --navbar-stain-hold: 380ms;
+
+  /* Page dots stepper (walkthrough / carousels) */
+  --page-dot-size: 8px;
+  --page-dot-active-width: 22px; /* ~2.75× height — píldora */
+  --page-dot-transition-ms: 220ms;
+
+  /* Layout 4.2 — agenda (Figma 12641:495 / 12641:917) */
+  --appointment-header-offset-x: 16px;
+  --appointment-body-offset-x: 16px;
+  --appointment-header-gap: 6px;
+  --appointment-body-gap: 24px;
+  --appointment-intro-gap: 6px;
+  --appointment-day-cell-width: 49px;
+  --appointment-day-cell-height: 64px;
+  --appointment-month-banner-height: 48px;
+  --appointment-chevron-size: 16px;
+  --appointment-slot-gap-x: 6px;
+  --appointment-slot-gap-y: 8px;
+  --appointment-selector-gap: 12px;
+  --appointment-calendar-gap: 12px;
+  --appointment-recordatorio-height: 100px;
+  --appointment-recordatorio-photo-width: 76px;
+  --appointment-confirmed-gap: 13px;
+  --appointment-reminder-card-padding: 16px;
+  --appointment-reminder-row-gap: 24px;
+  --appointment-reminder-icon-gap: 20px;
+
+  /* Layout 4.3 — videollamada / objetivos (Figma 12639:26768) */
+  --goals-home-content-gap: 24px;
+  --goals-recordatorio-height: 203px;
+  --goals-placeholder-sm-height: 144px;
+  --goals-placeholder-lg-height: 259px;
+  --goals-card-height: 206px;
+  --goals-badge-size: 24px;
+  --goals-badge-radius: 0;
+  --goals-bridge-avatar-size: 150px;
+  --goals-illustration-width: 190px;
+  --goals-illustration-height: 204px;
+  /* Figma 12637:429 — diagonal de ~55% superior a esquina inf. izq. */
+  --goals-illustration-clip: polygon(55% 0, 100% 0, 100% 100%, 0% 100%);
+  --goals-bridge-loading-duration: 1400ms;
+}
